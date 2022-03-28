@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_host_controller"
+    app:startDestination="@id/movieFragment">
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.planetmovie.ui.movie.MovieFragment"
+        android:label="Movie"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_movieFragment_to_searchFragment"
+            app:destination="@id/searchMovieFragment" />
+        <action
+            android:id="@+id/action_movieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tvFragment"
+        android:name="com.planetmovie.ui.tv.TvFragment"
+        android:label="Tv"
+        tools:layout="@layout/fragment_tv">
+        <action
+            android:id="@+id/action_tvFragment_to_searchTvFragment"
+            app:destination="@id/searchTvFragment" />
+        <action
+            android:id="@+id/action_tvFragment_to_tvDetailFragment"
+            app:destination="@id/tvDetailFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.planetmovie.ui.favorite.FavoriteFragment"
+        android:label="Favorite"
+        tools:layout="@layout/fragment_favorite" />
+
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.planetmovie.ui.about.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+
+
+    <fragment
+        android:id="@+id/searchMovieFragment"
+        android:name="com.planetmovie.ui.searchmovie.SearchMovieFragment"
+        android:label="SearchMovie"
+        tools:layout="@layout/fragment_search_movie">
+        <action
+            android:id="@+id/action_searchMovieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/searchTvFragment"
+        android:name="com.planetmovie.ui.searchtv.SearchTvFragment"
+        android:label="Search TV"
+        tools:layout="@layout/fragment_search_tv">
+        <action
+            android:id="@+id/action_searchTvFragment_to_tvDetailFragment"
+            app:destination="@id/tvDetailFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.planetmovie.ui.moviedetail.MovieDetailFragment"
+        android:label="Movie Detail"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/tvDetailFragment"
+        android:name="com.planetmovie.ui.tvdetail.TvDetailFragment"
+        android:label="Tv Detail"
+        tools:layout="@layout/fragment_tv_detail">
+        <argument
+            android:name="tvId"
+            app:argType="integer" />
+    </fragment>
+
+
+</navigation>

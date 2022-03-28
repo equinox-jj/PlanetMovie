@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shRvOne"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shRvTwo"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shRvOne"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shTxtOne"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintStart_toEndOf="@+id/shRvTwo"
+        app:layout_constraintTop_toTopOf="@+id/shRvTwo"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shTxtTwo"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintStart_toStartOf="@+id/shTxtOne"
+        app:layout_constraintTop_toBottomOf="@+id/shTxtOne"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shTxtThree"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintStart_toStartOf="@+id/shTxtTwo"
+        app:layout_constraintTop_toBottomOf="@+id/shTxtTwo"
+        app:riv_corner_radius="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

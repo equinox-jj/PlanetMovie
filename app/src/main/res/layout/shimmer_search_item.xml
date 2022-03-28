@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shSearchOne"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shSearchTwo"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shSearchOne"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shSearchThree"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shSearchTwo"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shSearchFour"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shSearchThree"
+        app:riv_corner_radius="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/shSearchFive"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/gray_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shSearchFour"
+        app:riv_corner_radius="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

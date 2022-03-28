@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movieTrailer"
+            type="com.planetmovie.data.remote.model.MovieVideosResult" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvTrailer"
+        android:trailerCLick="@{movieTrailer}"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:foreground="?selectableItemBackground"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivTrailer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/image_trailer"
+                android:scaleType="centerCrop"
+                android:trailerPoster="@{movieTrailer}"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/ivYoutube"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_youtube"
+                android:contentDescription="@string/image_trailer" />
+
+            <TextView
+                android:id="@+id/tvTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@{movieTrailer.name}"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="Lorem Ipsum" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
