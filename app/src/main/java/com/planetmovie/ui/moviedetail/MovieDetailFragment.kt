@@ -143,7 +143,7 @@ class MovieDetailFragment : Fragment() {
             binding.shimmerDetailMovie.stopShimmer()
             binding.shimmerDetailMovie.visibility = View.GONE
             binding.ivDtlMovieBackdrop.visibility = View.VISIBLE
-            binding.shadowBackdrop.visibility = View.GONE
+            binding.shadowBackdrop.visibility = View.VISIBLE
             binding.ivDtlPoster.visibility = View.VISIBLE
             binding.tvRating.visibility = View.VISIBLE
             binding.tvDtlRate.visibility = View.VISIBLE

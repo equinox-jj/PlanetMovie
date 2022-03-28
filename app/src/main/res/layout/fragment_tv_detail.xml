@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
+        <View
             android:id="@+id/shadowBackdrop"
             android:layout_width="match_parent"
             android:layout_height="300dp"
