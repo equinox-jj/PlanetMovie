@@ -93,69 +93,72 @@ class MovieDetailFragment : Fragment() {
 
     private fun detailData(data: MovieDetailResponse) {
         data.let {
-            val rating = "${it.voteAverage} / 10"
+            binding.apply {
+                val rating = "${it.voteAverage} / 10"
 //            binding.tvMovieDtl.text = it.originalTitle
-            binding.rbDtlOne.rating = it.voteAverage.div(2).toFloat()
-            binding.tvDtlDate.text = it.releaseDate
-            binding.tvDtlRate.text = rating
-            binding.ivDtlMovieBackdrop.load(Constant.BASE_IMG_URL_BACKDROP + it.backdropPath) {
-                crossfade(300)
-                error(R.drawable.ic_no_image)
+                rbDtlOne.rating = it.voteAverage.div(2).toFloat()
+                tvDtlDate.text = it.releaseDate
+                tvDtlRate.text = rating
+                ivDtlMovieBackdrop.load(Constant.BASE_IMG_URL_BACKDROP + it.backdropPath) {
+                    crossfade(300)
+                    error(R.drawable.ic_no_image)
+                }
+                ivDtlPoster.load(Constant.BASE_IMG_URL_POSTER + it.posterPath) {
+                    crossfade(300)
+                    error(R.drawable.ic_no_image)
+                }
+                if (it.overview.isNotEmpty()) {
+                    tvDtlOverview.text = it.overview
+                } else tvDtlOverview.text = getString(R.string.overview_not_available)
+                if (it.movieCredits.movieCast.isNotEmpty()) {
+                    mMovieDetailCastAdapter.castDiffUtil(it.movieCredits)
+                } else tvCast.visibility = View.GONE
+                if (it.movieVideos.movieVideoResults.isNotEmpty()) {
+                    mMovieDetailTrailerAdapter.trailerDiffUtil(it.movieVideos)
+                } else tvTrailer.visibility = View.GONE
             }
-            binding.ivDtlPoster.load(Constant.BASE_IMG_URL_POSTER + it.posterPath) {
-                crossfade(300)
-                error(R.drawable.ic_no_image)
-            }
-            if (it.overview.isNotEmpty()) {
-                binding.tvDtlOverview.text = it.overview
-            } else binding.tvDtlOverview.text = getString(R.string.overview_not_available)
-            if (it.movieCredits.movieCast.isNotEmpty()) {
-                mMovieDetailCastAdapter.castDiffUtil(it.movieCredits)
-            } else binding.tvCast.visibility = View.GONE
-            if (it.movieVideos.movieVideoResults.isNotEmpty()) {
-                mMovieDetailTrailerAdapter.trailerDiffUtil(it.movieVideos)
-            } else binding.tvTrailer.visibility = View.GONE
-
         }
     }
 
     private fun showShimmer(boolean: Boolean) {
-        if (boolean) {
-            isShimmerLoading = true
-            binding.shimmerDetailMovie.startShimmer()
-            binding.shimmerDetailMovie.visibility = View.VISIBLE
-            binding.ivDtlMovieBackdrop.visibility = View.GONE
-            binding.shadowBackdrop.visibility = View.GONE
-            binding.ivDtlPoster.visibility = View.GONE
-            binding.tvRating.visibility = View.GONE
-            binding.tvDtlRate.visibility = View.GONE
-            binding.rbDtlOne.visibility = View.GONE
-            binding.tvReleaseDate.visibility = View.GONE
-            binding.tvDtlDate.visibility = View.GONE
-            binding.tvOverview.visibility = View.GONE
-            binding.tvDtlOverview.visibility = View.GONE
-            binding.tvCast.visibility = View.GONE
-            binding.rvDtlCast.visibility = View.GONE
-            binding.tvTrailer.visibility = View.GONE
-            binding.rvDtlTrailer.visibility = View.GONE
-        } else {
-            isShimmerLoading = false
-            binding.shimmerDetailMovie.stopShimmer()
-            binding.shimmerDetailMovie.visibility = View.GONE
-            binding.ivDtlMovieBackdrop.visibility = View.VISIBLE
-            binding.shadowBackdrop.visibility = View.VISIBLE
-            binding.ivDtlPoster.visibility = View.VISIBLE
-            binding.tvRating.visibility = View.VISIBLE
-            binding.tvDtlRate.visibility = View.VISIBLE
-            binding.rbDtlOne.visibility = View.VISIBLE
-            binding.tvReleaseDate.visibility = View.VISIBLE
-            binding.tvDtlDate.visibility = View.VISIBLE
-            binding.tvOverview.visibility = View.VISIBLE
-            binding.tvDtlOverview.visibility = View.VISIBLE
-            binding.tvCast.visibility = View.VISIBLE
-            binding.rvDtlCast.visibility = View.VISIBLE
-            binding.tvTrailer.visibility = View.VISIBLE
-            binding.rvDtlTrailer.visibility = View.VISIBLE
+        binding.apply {
+            if (boolean) {
+                isShimmerLoading = true
+                shimmerDetailMovie.startShimmer()
+                shimmerDetailMovie.visibility = View.VISIBLE
+                ivDtlMovieBackdrop.visibility = View.GONE
+                shadowBackdrop.visibility = View.GONE
+                ivDtlPoster.visibility = View.GONE
+                tvRating.visibility = View.GONE
+                tvDtlRate.visibility = View.GONE
+                rbDtlOne.visibility = View.GONE
+                tvReleaseDate.visibility = View.GONE
+                tvDtlDate.visibility = View.GONE
+                tvOverview.visibility = View.GONE
+                tvDtlOverview.visibility = View.GONE
+                tvCast.visibility = View.GONE
+                rvDtlCast.visibility = View.GONE
+                tvTrailer.visibility = View.GONE
+                rvDtlTrailer.visibility = View.GONE
+            } else {
+                isShimmerLoading = false
+                shimmerDetailMovie.stopShimmer()
+                shimmerDetailMovie.visibility = View.GONE
+                ivDtlMovieBackdrop.visibility = View.VISIBLE
+                shadowBackdrop.visibility = View.VISIBLE
+                ivDtlPoster.visibility = View.VISIBLE
+                tvRating.visibility = View.VISIBLE
+                tvDtlRate.visibility = View.VISIBLE
+                rbDtlOne.visibility = View.VISIBLE
+                tvReleaseDate.visibility = View.VISIBLE
+                tvDtlDate.visibility = View.VISIBLE
+                tvOverview.visibility = View.VISIBLE
+                tvDtlOverview.visibility = View.VISIBLE
+                tvCast.visibility = View.VISIBLE
+                rvDtlCast.visibility = View.VISIBLE
+                tvTrailer.visibility = View.VISIBLE
+                rvDtlTrailer.visibility = View.VISIBLE
+            }
         }
     }
 

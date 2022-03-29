@@ -51,10 +51,8 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
-            binding.lifecycleOwner = viewLifecycleOwner
-            binding.mMovieViewModel = mMovieViewModel
-        }
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.mMovieViewModel = mMovieViewModel
 
         setupRecycler()
         readBackOnline()
@@ -63,25 +61,25 @@ class MovieFragment : Fragment() {
     private fun setupRecycler() {
         binding.rvNowPlayingMovie.apply {
             mNowPlayingAdapter = ItemMovieListAdapter()
-            binding.rvNowPlayingMovie.adapter = mNowPlayingAdapter
-            binding.rvNowPlayingMovie.setHasFixedSize(true)
-            binding.rvNowPlayingMovie.layoutManager =
+            adapter = mNowPlayingAdapter
+            setHasFixedSize(true)
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvPopularMovie.apply {
             mPopularAdapter = ItemMovieListAdapter()
-            binding.rvPopularMovie.adapter = mPopularAdapter
-            binding.rvPopularMovie.setHasFixedSize(true)
-            binding.rvPopularMovie.layoutManager =
+            adapter = mPopularAdapter
+            setHasFixedSize(true)
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvUpcomingMovie.apply {
             mUpcomingAdapter = ItemMovieListAdapter()
-            binding.rvUpcomingMovie.adapter = mUpcomingAdapter
-            binding.rvUpcomingMovie.setHasFixedSize(true)
-            binding.rvUpcomingMovie.layoutManager =
+            adapter = mUpcomingAdapter
+            setHasFixedSize(true)
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
@@ -219,27 +217,30 @@ class MovieFragment : Fragment() {
     }
 
     private fun showShimmer(boolean: Boolean) {
-        if (boolean) {
-            isShimmerLoading = true
-            binding.shimmerRvMovie.startShimmer()
-            binding.shimmerRvMovie.visibility = View.VISIBLE
-            binding.tvMovieOne.visibility = View.GONE
-            binding.tvMovieTwo.visibility = View.GONE
-            binding.tvMovieThree.visibility = View.GONE
-            binding.rvPopularMovie.visibility = View.GONE
-            binding.rvUpcomingMovie.visibility = View.GONE
-            binding.rvNowPlayingMovie.visibility = View.GONE
-        } else {
-            isShimmerLoading = false
-            binding.shimmerRvMovie.stopShimmer()
-            binding.shimmerRvMovie.visibility = View.GONE
-            binding.tvMovieOne.visibility = View.VISIBLE
-            binding.tvMovieTwo.visibility = View.VISIBLE
-            binding.tvMovieThree.visibility = View.VISIBLE
-            binding.rvPopularMovie.visibility = View.VISIBLE
-            binding.rvUpcomingMovie.visibility = View.VISIBLE
-            binding.rvNowPlayingMovie.visibility = View.VISIBLE
+        binding.apply {
+            if (boolean) {
+                isShimmerLoading = true
+                shimmerRvMovie.startShimmer()
+                shimmerRvMovie.visibility = View.VISIBLE
+                tvMovieOne.visibility = View.GONE
+                tvMovieTwo.visibility = View.GONE
+                tvMovieThree.visibility = View.GONE
+                rvPopularMovie.visibility = View.GONE
+                rvUpcomingMovie.visibility = View.GONE
+                binding.rvNowPlayingMovie.visibility = View.GONE
+            } else {
+                isShimmerLoading = false
+                shimmerRvMovie.stopShimmer()
+                shimmerRvMovie.visibility = View.GONE
+                tvMovieOne.visibility = View.VISIBLE
+                tvMovieTwo.visibility = View.VISIBLE
+                tvMovieThree.visibility = View.VISIBLE
+                rvPopularMovie.visibility = View.VISIBLE
+                rvUpcomingMovie.visibility = View.VISIBLE
+                rvNowPlayingMovie.visibility = View.VISIBLE
+            }
         }
+
     }
 
     override fun onDestroyView() {
