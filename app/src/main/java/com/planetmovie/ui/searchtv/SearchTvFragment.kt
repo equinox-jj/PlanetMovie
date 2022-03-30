@@ -1,14 +1,13 @@
 package com.planetmovie.ui.searchtv
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.planetmovie.R
 import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentSearchTvBinding
 import com.planetmovie.ui.SharedViewModel
@@ -17,7 +16,7 @@ import com.planetmovie.ui.tv.TvViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchTvFragment : Fragment() {
+class SearchTvFragment : Fragment(R.layout.fragment_search_tv) {
 
     // View Binding
     private var _binding: FragmentSearchTvBinding? = null
@@ -33,16 +32,9 @@ class SearchTvFragment : Fragment() {
     // Shimmer Loading
     private var isShimmerLoading: Boolean = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSearchTvBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentSearchTvBinding.bind(view)
 
         mSharedViewModel.readBackOnline.observe(viewLifecycleOwner) {
             mSharedViewModel.backOnline = it
@@ -53,9 +45,11 @@ class SearchTvFragment : Fragment() {
     }
 
     private fun setupRecycler() {
-        binding.rvSearchTv.adapter = mSearchMovieAdapter
-        binding.rvSearchTv.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvSearchTv.setHasFixedSize(true)
+        binding.rvSearchTv.apply {
+            adapter = mSearchMovieAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
     }
 
     private fun searchTv() {
@@ -99,16 +93,18 @@ class SearchTvFragment : Fragment() {
     }
 
     private fun showSearchShimmer(boolean: Boolean) {
-        if (boolean) {
-            isShimmerLoading = true
-            binding.shimmerRvSearch.startShimmer()
-            binding.shimmerRvSearch.visibility = View.VISIBLE
-            binding.rvSearchTv.visibility = View.INVISIBLE
-        } else {
-            isShimmerLoading = false
-            binding.shimmerRvSearch.stopShimmer()
-            binding.shimmerRvSearch.visibility = View.GONE
-            binding.rvSearchTv.visibility = View.VISIBLE
+        binding.apply {
+            if (boolean) {
+                isShimmerLoading = true
+                shimmerRvSearch.startShimmer()
+                shimmerRvSearch.visibility = View.VISIBLE
+                rvSearchTv.visibility = View.INVISIBLE
+            } else {
+                isShimmerLoading = false
+                shimmerRvSearch.stopShimmer()
+                shimmerRvSearch.visibility = View.GONE
+                rvSearchTv.visibility = View.VISIBLE
+            }
         }
     }
 

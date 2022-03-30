@@ -1,14 +1,13 @@
 package com.planetmovie.ui.tv
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.planetmovie.R
 import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentTvBinding
 import com.planetmovie.ui.SharedViewModel
@@ -19,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TvFragment : Fragment() {
+class TvFragment : Fragment(R.layout.fragment_tv) {
 
     // View Binding
     private var _binding: FragmentTvBinding? = null
@@ -40,21 +39,13 @@ class TvFragment : Fragment() {
     // Shimmer Loading
     private var isShimmerLoading: Boolean = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTvBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentTvBinding.bind(view)
 
-        binding.apply {
-            binding.lifecycleOwner = viewLifecycleOwner
-            binding.mTvViewModel = mTvViewModel
-        }
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.mTvViewModel = mTvViewModel
+
 
         setupRecycler()
         readBackOnline()
@@ -63,25 +54,25 @@ class TvFragment : Fragment() {
     private fun setupRecycler() {
         binding.rvAiringTodayTv.apply {
             mAiringTodayAdapter = ItemTvListAdapter()
-            binding.rvAiringTodayTv.adapter = mAiringTodayAdapter
-            binding.rvAiringTodayTv.setHasFixedSize(true)
-            binding.rvAiringTodayTv.layoutManager =
+            adapter = mAiringTodayAdapter
+            setHasFixedSize(true)
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvPopularTv.apply {
             mPopularAdapter = ItemTvListAdapter()
-            binding.rvPopularTv.adapter = mPopularAdapter
-            binding.rvPopularTv.setHasFixedSize(true)
-            binding.rvPopularTv.layoutManager =
+            adapter = mPopularAdapter
+            setHasFixedSize(true)
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvTopRatedTv.apply {
             mTopRatedAdapter = ItemTvListAdapter()
-            binding.rvTopRatedTv.adapter = mTopRatedAdapter
-            binding.rvTopRatedTv.setHasFixedSize(true)
-            binding.rvTopRatedTv.layoutManager =
+            adapter = mTopRatedAdapter
+            setHasFixedSize(true)
+            layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
@@ -218,26 +209,28 @@ class TvFragment : Fragment() {
     }
 
     private fun showShimmer(boolean: Boolean) {
-        if (boolean) {
-            isShimmerLoading = true
-            binding.shimmerRvTv.startShimmer()
-            binding.shimmerRvTv.visibility = View.VISIBLE
-            binding.tvTvOne.visibility = View.GONE
-            binding.tvTvTwo.visibility = View.GONE
-            binding.tvTvThree.visibility = View.GONE
-            binding.rvAiringTodayTv.visibility = View.GONE
-            binding.rvPopularTv.visibility = View.GONE
-            binding.rvTopRatedTv.visibility = View.GONE
-        } else {
-            isShimmerLoading = false
-            binding.shimmerRvTv.stopShimmer()
-            binding.shimmerRvTv.visibility = View.GONE
-            binding.tvTvOne.visibility = View.VISIBLE
-            binding.tvTvTwo.visibility = View.VISIBLE
-            binding.tvTvThree.visibility = View.VISIBLE
-            binding.rvAiringTodayTv.visibility = View.VISIBLE
-            binding.rvPopularTv.visibility = View.VISIBLE
-            binding.rvTopRatedTv.visibility = View.VISIBLE
+        binding.apply {
+            if (boolean) {
+                isShimmerLoading = true
+                shimmerRvTv.startShimmer()
+                shimmerRvTv.visibility = View.VISIBLE
+                tvTvOne.visibility = View.GONE
+                tvTvTwo.visibility = View.GONE
+                tvTvThree.visibility = View.GONE
+                rvAiringTodayTv.visibility = View.GONE
+                rvPopularTv.visibility = View.GONE
+                rvTopRatedTv.visibility = View.GONE
+            } else {
+                isShimmerLoading = false
+                shimmerRvTv.stopShimmer()
+                shimmerRvTv.visibility = View.GONE
+                tvTvOne.visibility = View.VISIBLE
+                tvTvTwo.visibility = View.VISIBLE
+                tvTvThree.visibility = View.VISIBLE
+                rvAiringTodayTv.visibility = View.VISIBLE
+                rvPopularTv.visibility = View.VISIBLE
+                rvTopRatedTv.visibility = View.VISIBLE
+            }
         }
     }
 

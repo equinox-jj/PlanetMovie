@@ -1,10 +1,8 @@
 package com.planetmovie.ui.tvdetail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -20,7 +18,7 @@ import com.planetmovie.util.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TvDetailFragment : Fragment() {
+class TvDetailFragment : Fragment(R.layout.fragment_tv_detail) {
 
     // View Binding
     private var _binding: FragmentTvDetailBinding? = null
@@ -42,33 +40,24 @@ class TvDetailFragment : Fragment() {
     // Favorite Menu
     private lateinit var favMenuItem: MenuItem
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTvDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentTvDetailBinding.bind(view)
         setupRecycler()
         observeViewModel()
     }
 
     private fun setupRecycler() {
         binding.rvDtlCast.apply {
-            binding.rvDtlCast.adapter = mTvDetailCastAdapter
-            binding.rvDtlCast.setHasFixedSize(true)
-            binding.rvDtlCast.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = mTvDetailCastAdapter
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvDtlTrailer.apply {
-            binding.rvDtlTrailer.adapter = mTvDetailTrailerAdapter
-            binding.rvDtlTrailer.setHasFixedSize(true)
-            binding.rvDtlTrailer.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = mTvDetailTrailerAdapter
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
@@ -93,70 +82,73 @@ class TvDetailFragment : Fragment() {
 
     private fun detailData(data: MovieDetailResponse) {
         data.let {
-            val rating = "${it.voteAverage} / 10"
-//            binding.ctlTvDetail.title = it.tvName
-            binding.tvDtlDate.text = it.tvFirstAirDate
-            binding.rbDtlOne.rating = it.voteAverage.div(2).toFloat()
-            if (it.overview.isNotEmpty()) {
-                binding.tvDtlOverview.text = it.overview
-            } else binding.tvDtlOverview.text = getString(R.string.overview_not_available)
-            binding.tvDtlRate.text = rating
-            binding.ivDtlTvBackdrop.load(Constant.BASE_IMG_URL_BACKDROP + it.backdropPath) {
-                crossfade(300)
-                error(R.drawable.ic_no_image)
+            binding.apply {
+                val rating = "${it.voteAverage} / 10"
+                tvDtlDate.text = it.tvFirstAirDate
+                rbDtlOne.rating = it.voteAverage.div(2).toFloat()
+                if (it.overview.isNotEmpty()) {
+                    tvDtlOverview.text = it.overview
+                } else tvDtlOverview.text = getString(R.string.overview_not_available)
+                tvDtlRate.text = rating
+                ivDtlTvBackdrop.load(Constant.BASE_IMG_URL_BACKDROP + it.backdropPath) {
+                    crossfade(300)
+                    error(R.drawable.ic_no_image)
+                }
+                ivDtlPoster.load(Constant.BASE_IMG_URL_POSTER + it.posterPath) {
+                    crossfade(300)
+                    error(R.drawable.ic_no_image)
+                }
+                if (it.movieCredits.movieCast.isNotEmpty()) {
+                    mTvDetailCastAdapter.castDiffUtil(it.movieCredits)
+                } else tvCast.visibility = View.GONE
+                if (it.movieVideos.movieVideoResults.isNotEmpty()) {
+                    mTvDetailTrailerAdapter.trailerDiffUtil(it.movieVideos)
+                } else tvTrailer.visibility = View.GONE
             }
-            binding.ivDtlPoster.load(Constant.BASE_IMG_URL_POSTER + it.posterPath) {
-                crossfade(300)
-                error(R.drawable.ic_no_image)
-            }
-            if (it.movieCredits.movieCast.isNotEmpty()) {
-                mTvDetailCastAdapter.castDiffUtil(it.movieCredits)
-            } else binding.tvCast.visibility = View.GONE
-            if (it.movieVideos.movieVideoResults.isNotEmpty()) {
-                mTvDetailTrailerAdapter.trailerDiffUtil(it.movieVideos)
-            } else binding.tvTrailer.visibility = View.GONE
-
         }
     }
 
     private fun showShimmer(boolean: Boolean) {
-        if (boolean) {
-            isShimmerLoading = true
-            binding.shimmerDetailTv.startShimmer()
-            binding.shimmerDetailTv.visibility = View.VISIBLE
-            binding.ivDtlTvBackdrop.visibility = View.GONE
-            binding.shadowBackdrop.visibility = View.GONE
-            binding.ivDtlPoster.visibility = View.GONE
-            binding.tvRating.visibility = View.GONE
-            binding.tvDtlRate.visibility = View.GONE
-            binding.rbDtlOne.visibility = View.GONE
-            binding.tvReleaseDate.visibility = View.GONE
-            binding.tvDtlDate.visibility = View.GONE
-            binding.tvOverview.visibility = View.GONE
-            binding.tvDtlOverview.visibility = View.GONE
-            binding.tvCast.visibility = View.GONE
-            binding.rvDtlCast.visibility = View.GONE
-            binding.tvTrailer.visibility = View.GONE
-            binding.rvDtlTrailer.visibility = View.GONE
-        } else {
-            isShimmerLoading = false
-            binding.shimmerDetailTv.stopShimmer()
-            binding.shimmerDetailTv.visibility = View.GONE
-            binding.ivDtlTvBackdrop.visibility = View.VISIBLE
-            binding.shadowBackdrop.visibility = View.VISIBLE
-            binding.ivDtlPoster.visibility = View.VISIBLE
-            binding.tvRating.visibility = View.VISIBLE
-            binding.tvDtlRate.visibility = View.VISIBLE
-            binding.rbDtlOne.visibility = View.VISIBLE
-            binding.tvReleaseDate.visibility = View.VISIBLE
-            binding.tvDtlDate.visibility = View.VISIBLE
-            binding.tvOverview.visibility = View.VISIBLE
-            binding.tvDtlOverview.visibility = View.VISIBLE
-            binding.tvCast.visibility = View.VISIBLE
-            binding.rvDtlCast.visibility = View.VISIBLE
-            binding.tvTrailer.visibility = View.VISIBLE
-            binding.rvDtlTrailer.visibility = View.VISIBLE
+        binding.apply {
+            if (boolean) {
+                isShimmerLoading = true
+                shimmerDetailTv.startShimmer()
+                shimmerDetailTv.visibility = View.VISIBLE
+                ivDtlTvBackdrop.visibility = View.GONE
+                shadowBackdrop.visibility = View.GONE
+                ivDtlPoster.visibility = View.GONE
+                tvRating.visibility = View.GONE
+                tvDtlRate.visibility = View.GONE
+                rbDtlOne.visibility = View.GONE
+                tvReleaseDate.visibility = View.GONE
+                tvDtlDate.visibility = View.GONE
+                tvOverview.visibility = View.GONE
+                tvDtlOverview.visibility = View.GONE
+                tvCast.visibility = View.GONE
+                rvDtlCast.visibility = View.GONE
+                tvTrailer.visibility = View.GONE
+                rvDtlTrailer.visibility = View.GONE
+            } else {
+                isShimmerLoading = false
+                shimmerDetailTv.stopShimmer()
+                shimmerDetailTv.visibility = View.GONE
+                ivDtlTvBackdrop.visibility = View.VISIBLE
+                shadowBackdrop.visibility = View.VISIBLE
+                ivDtlPoster.visibility = View.VISIBLE
+                tvRating.visibility = View.VISIBLE
+                tvDtlRate.visibility = View.VISIBLE
+                rbDtlOne.visibility = View.VISIBLE
+                tvReleaseDate.visibility = View.VISIBLE
+                tvDtlDate.visibility = View.VISIBLE
+                tvOverview.visibility = View.VISIBLE
+                tvDtlOverview.visibility = View.VISIBLE
+                tvCast.visibility = View.VISIBLE
+                rvDtlCast.visibility = View.VISIBLE
+                tvTrailer.visibility = View.VISIBLE
+                rvDtlTrailer.visibility = View.VISIBLE
+            }
         }
+
     }
 
     override fun onDestroyView() {
