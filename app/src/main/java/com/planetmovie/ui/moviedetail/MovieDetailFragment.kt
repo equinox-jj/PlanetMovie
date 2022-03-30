@@ -1,10 +1,8 @@
 package com.planetmovie.ui.moviedetail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -20,7 +18,7 @@ import com.planetmovie.util.Constant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieDetailFragment : Fragment() {
+class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     // View Binding
     private var _binding: FragmentMovieDetailBinding? = null
@@ -42,33 +40,24 @@ class MovieDetailFragment : Fragment() {
     // Favorite Menu
     private lateinit var favMenuItem: MenuItem
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentMovieDetailBinding.bind(view)
         setupRecycler()
         observeViewModel()
     }
 
     private fun setupRecycler() {
         binding.rvDtlCast.apply {
-            binding.rvDtlCast.adapter = mMovieDetailCastAdapter
-            binding.rvDtlCast.setHasFixedSize(true)
-            binding.rvDtlCast.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = mMovieDetailCastAdapter
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvDtlTrailer.apply {
             binding.rvDtlTrailer.adapter = mMovieDetailTrailerAdapter
             binding.rvDtlTrailer.setHasFixedSize(true)
-            binding.rvDtlTrailer.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            binding.rvDtlTrailer.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
@@ -95,7 +84,6 @@ class MovieDetailFragment : Fragment() {
         data.let {
             binding.apply {
                 val rating = "${it.voteAverage} / 10"
-//            binding.tvMovieDtl.text = it.originalTitle
                 rbDtlOne.rating = it.voteAverage.div(2).toFloat()
                 tvDtlDate.text = it.releaseDate
                 tvDtlRate.text = rating

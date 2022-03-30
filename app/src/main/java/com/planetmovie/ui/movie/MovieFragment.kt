@@ -1,14 +1,13 @@
 package com.planetmovie.ui.movie
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.planetmovie.R
 import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentMovieBinding
 import com.planetmovie.ui.SharedViewModel
@@ -19,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieFragment : Fragment() {
+class MovieFragment : Fragment(R.layout.fragment_movie) {
 
     // View Binding
     private var _binding: FragmentMovieBinding? = null
@@ -40,16 +39,9 @@ class MovieFragment : Fragment() {
     // Shimmer Loading
     private var isShimmerLoading: Boolean = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentMovieBinding.bind(view)
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.mMovieViewModel = mMovieViewModel
@@ -63,24 +55,21 @@ class MovieFragment : Fragment() {
             mNowPlayingAdapter = ItemMovieListAdapter()
             adapter = mNowPlayingAdapter
             setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvPopularMovie.apply {
             mPopularAdapter = ItemMovieListAdapter()
             adapter = mPopularAdapter
             setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvUpcomingMovie.apply {
             mUpcomingAdapter = ItemMovieListAdapter()
             adapter = mUpcomingAdapter
             setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
