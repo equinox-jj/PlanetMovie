@@ -16,6 +16,7 @@ import com.planetmovie.ui.movie.MovieFragmentDirections
 import com.planetmovie.ui.searchmovie.SearchMovieFragmentDirections
 import com.planetmovie.ui.searchtv.SearchTvFragmentDirections
 import com.planetmovie.ui.tv.TvFragmentDirections
+import com.planetmovie.util.Constant.Companion.BASE_IMG_URL_BACKDROP
 import com.planetmovie.util.Constant.Companion.BASE_IMG_URL_CAST
 import com.planetmovie.util.Constant.Companion.BASE_IMG_URL_POSTER
 import com.planetmovie.util.Constant.Companion.BASE_TRAILER_THUMBNAIL
@@ -30,8 +31,7 @@ class BindingAdapter {
         @JvmStatic
         fun navigateMovieToDetail(view: CardView, movieId: Int) {
             view.setOnClickListener {
-                val action =
-                    MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
+                val action = MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
                 view.findNavController().navigate(action)
 
             }
@@ -41,10 +41,7 @@ class BindingAdapter {
         @JvmStatic
         fun navigateSearchMovieToDetail(view: CardView, movieId: Int) {
             view.setOnClickListener {
-                val action =
-                    SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailFragment(
-                        movieId
-                    )
+                val action = SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailFragment(movieId)
                 view.findNavController().navigate(action)
             }
         }
@@ -62,8 +59,7 @@ class BindingAdapter {
         @JvmStatic
         fun navigateSearchTvToDetail(view: CardView, tvId: Int) {
             view.setOnClickListener {
-                val action =
-                    SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
+                val action = SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
                 view.findNavController().navigate(action)
             }
         }
@@ -94,7 +90,16 @@ class BindingAdapter {
         @JvmStatic
         fun posterPath(imageView: ImageView, movieResult: MovieResult) {
             imageView.load(BASE_IMG_URL_POSTER + movieResult.posterPath) {
-                crossfade(300)
+                crossfade(true)
+                error(R.drawable.ic_no_image)
+            }
+        }
+
+        @BindingAdapter("android:backdropPath")
+        @JvmStatic
+        fun backdropPath(imageView: ImageView, movieResult: MovieResult) {
+            imageView.load(BASE_IMG_URL_BACKDROP + movieResult.backdropPath) {
+                crossfade(true)
                 error(R.drawable.ic_no_image)
             }
         }
@@ -103,7 +108,7 @@ class BindingAdapter {
         @JvmStatic
         fun castPoster(imageView: ImageView, movieResult: MovieCast) {
             imageView.load(BASE_IMG_URL_CAST + movieResult.profilePath) {
-                crossfade(300)
+                crossfade(true)
                 error(R.drawable.ic_no_image)
             }
         }
@@ -112,7 +117,7 @@ class BindingAdapter {
         @JvmStatic
         fun trailerPoster(imageView: ImageView, trailerResult: MovieVideosResult) {
             imageView.load(BASE_TRAILER_THUMBNAIL + trailerResult.key + BASE_TRAILER_THUMBNAIL_END) {
-                crossfade(300)
+                crossfade(true)
                 error(R.drawable.ic_no_image)
             }
         }

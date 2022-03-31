@@ -26,7 +26,7 @@
                 android:layout_height="150dp"
                 android:alpha="0.6"
                 android:contentDescription="@string/image_no_internet_connection"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -44,7 +44,7 @@
                 android:text="@string/no_internet_connection"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/ivNoInternet"
                 app:layout_constraintStart_toStartOf="@+id/ivNoInternet"
                 app:layout_constraintTop_toBottomOf="@+id/ivNoInternet" />
@@ -88,19 +88,33 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/svMovie" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNowPlayingMovie"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <com.github.islamkhsh.CardSliderViewPager
+                android:id="@+id/sliderMovie"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_marginTop="8dp"
-                android:visibility="invisible"
+                android:visibility="gone"
+                app:auto_slide_time="5"
+                app:cardSlider_indicator="@id/sliderIndicatorMovie"
+                app:cardSlider_otherPagesWidth="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMovieThree" />
+
+            <com.github.islamkhsh.CardSliderIndicator
+                android:id="@+id/sliderIndicatorMovie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:indicatorsToShow="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sliderMovie" />
 
             <TextView
                 android:id="@+id/tvMovieOne"
@@ -112,16 +126,16 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvNowPlayingMovie" />
+                app:layout_constraintTop_toBottomOf="@id/sliderIndicatorMovie" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopularMovie"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +151,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvPopularMovie" />
 
@@ -146,7 +160,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvMovieTwo" />
@@ -156,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

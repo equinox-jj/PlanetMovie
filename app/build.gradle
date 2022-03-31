@@ -51,9 +51,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    // Paging
-    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
-
     // Coordinator Layout
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
 
@@ -114,6 +111,6 @@ dependencies {
     // Rounded Image View
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    // Animated Bottom Navigation Bar
-    implementation 'nl.joery.animatedbottombar:library:1.1.0'
+    // Image Slider
+    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
 }

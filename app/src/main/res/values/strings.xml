@@ -33,5 +33,6 @@
     <string name="image_cast">Image Cast</string>
     <string name="image_trailer">Image Trailer</string>
     <string name="overview_not_available">Overview Not Available</string>
+    <string name="image_slider_movie">Image Slider Movie</string>
 
 </resources>

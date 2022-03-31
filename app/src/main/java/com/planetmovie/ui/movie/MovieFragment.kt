@@ -12,6 +12,7 @@ import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentMovieBinding
 import com.planetmovie.ui.SharedViewModel
 import com.planetmovie.ui.adapter.ItemMovieListAdapter
+import com.planetmovie.ui.adapter.ItemMovieSliderAdapter
 import com.planetmovie.util.NetworkListener
 import com.planetmovie.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +30,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     private val mSharedViewModel: SharedViewModel by viewModels()
 
     // Adapter
-    private lateinit var mNowPlayingAdapter: ItemMovieListAdapter
+    private lateinit var mNowPlayingAdapter: ItemMovieSliderAdapter
     private lateinit var mPopularAdapter: ItemMovieListAdapter
     private lateinit var mUpcomingAdapter: ItemMovieListAdapter
 
@@ -51,11 +52,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     }
 
     private fun setupRecycler() {
-        binding.rvNowPlayingMovie.apply {
-            mNowPlayingAdapter = ItemMovieListAdapter()
+        binding.sliderMovie.apply {
+            mNowPlayingAdapter = ItemMovieSliderAdapter()
             adapter = mNowPlayingAdapter
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvPopularMovie.apply {
@@ -216,7 +215,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 tvMovieThree.visibility = View.GONE
                 rvPopularMovie.visibility = View.GONE
                 rvUpcomingMovie.visibility = View.GONE
-                binding.rvNowPlayingMovie.visibility = View.GONE
+                binding.sliderMovie.visibility = View.GONE
+                binding.sliderIndicatorMovie.visibility = View.GONE
             } else {
                 isShimmerLoading = false
                 shimmerRvMovie.stopShimmer()
@@ -226,7 +226,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 tvMovieThree.visibility = View.VISIBLE
                 rvPopularMovie.visibility = View.VISIBLE
                 rvUpcomingMovie.visibility = View.VISIBLE
-                rvNowPlayingMovie.visibility = View.VISIBLE
+                binding.sliderMovie.visibility = View.VISIBLE
+                binding.sliderIndicatorMovie.visibility = View.VISIBLE
             }
         }
 
