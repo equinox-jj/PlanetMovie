@@ -4,10 +4,9 @@ import com.planetmovie.BuildConfig
 
 class Constant {
     companion object {
-        const val BASE_URL = "https://api.themoviedb.org/3/"
         const val API_KEY = BuildConfig.API_KEY
 
-        // https://api.themoviedb.org/3/configuration?api_key=7db78f8c4fcc4cb31cdaa9a7e5e97ce0
+        const val BASE_URL = "https://api.themoviedb.org/3/"
         const val BASE_IMG_URL_BACKDROP = "https://image.tmdb.org/t/p/w780/"
         const val BASE_IMG_URL_POSTER = "https://image.tmdb.org/t/p/w342/"
         const val BASE_IMG_URL_CAST = "https://image.tmdb.org/t/p/w185/"
