@@ -13,9 +13,9 @@
     <string name="movie_now_playing">On Cinema</string>
 
 
-    <string name="on_tv">On Tv</string>
-    <string name="popular_tv">Popular Tv</string>
-    <string name="top_rated_tv">Top Rated Tv</string>
+    <string name="on_tv">Now Playing On Tv</string>
+    <string name="popular_tv">Popular Tv Series</string>
+    <string name="top_rated_tv">Top Rated Tv Series</string>
 
 
     <string name="movie_image">Movie Image</string>
