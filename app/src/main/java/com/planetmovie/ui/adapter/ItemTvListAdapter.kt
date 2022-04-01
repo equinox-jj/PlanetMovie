@@ -13,25 +13,22 @@ class ItemTvListAdapter : RecyclerView.Adapter<ItemTvListAdapter.MyViewHolder>()
 
     private var tvResult = emptyList<MovieResult>()
 
-    class MyViewHolder(var binding: ItemListTvBinding) :
+    class MyViewHolder(private val binding: ItemListTvBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemListTvBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
-            }
+        fun bind(tvResult: MovieResult) {
+            binding.tvResult = tvResult
+            binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+        val binding = ItemListTvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentTv = tvResult[position]
-        holder.binding.tvResult = currentTv
-        holder.binding.executePendingBindings()
+        holder.bind(currentTv)
     }
 
     override fun getItemCount(): Int = tvResult.size

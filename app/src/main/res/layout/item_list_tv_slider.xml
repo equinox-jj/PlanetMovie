@@ -4,78 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="tvResult"
             type="com.planetmovie.data.remote.model.MovieResult" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintTvSlider"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTvSlider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:navigateTvToDetail="@{tvResult.id}"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardTvSlider"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:navigateTvToDetail="@{tvResult.id}"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
+                android:id="@+id/imageTvSlider"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:backdropPath="@{tvResult}"
+                android:contentDescription="@string/image_slider_movie"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/imageTvSlider"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backdropPath="@{tvResult}"
-                    android:contentDescription="@string/image_slider_movie"
-                    android:scaleType="fitXY"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+            <View
+                android:id="@+id/gradientTvSlider"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/gradient_posterpath_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:id="@+id/gradientTvSlider"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/gradient_posterpath_overlay"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textTvTitleSlider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="@{tvResult.tvName}"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Lorem Ipsum" />
 
-                <TextView
-                    android:id="@+id/textTvTitleSlider"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="32dp"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@{tvResult.tvName}"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="Lorem Ipsum" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

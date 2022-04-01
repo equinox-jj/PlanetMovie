@@ -10,22 +10,22 @@ import com.planetmovie.data.remote.model.MovieResult
 import com.planetmovie.databinding.ItemListMovieSliderBinding
 import com.planetmovie.util.NetworkDiffUtil
 
-class ItemMovieSliderAdapter : CardSliderAdapter<ItemMovieSliderAdapter.MyViewHolder>() {
+class ItemMovieSliderAdapter : CardSliderAdapter<ItemMovieSliderAdapter.MovieSlideViewHolder>() {
 
     private var movieResult = emptyList<MovieResult>()
 
-    class MyViewHolder(var binding: ItemListMovieSliderBinding) :
+    class MovieSlideViewHolder(var binding: ItemListMovieSliderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
+            fun from(parent: ViewGroup): MovieSlideViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemListMovieSliderBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
+                return MovieSlideViewHolder(binding)
             }
         }
     }
 
-    override fun bindVH(holder: MyViewHolder, position: Int) {
+    override fun bindVH(holder: MovieSlideViewHolder, position: Int) {
         val currentMovieSlider = movieResult[position]
         holder.binding.movieResult = currentMovieSlider
         holder.binding.executePendingBindings()
@@ -33,8 +33,8 @@ class ItemMovieSliderAdapter : CardSliderAdapter<ItemMovieSliderAdapter.MyViewHo
 
     override fun getItemCount(): Int = movieResult.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSlideViewHolder {
+        return MovieSlideViewHolder.from(parent)
     }
 
     fun movieDiffUtil(newData: MovieResponse) {

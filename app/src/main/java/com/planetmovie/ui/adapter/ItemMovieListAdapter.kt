@@ -13,25 +13,22 @@ class ItemMovieListAdapter : RecyclerView.Adapter<ItemMovieListAdapter.MyViewHol
 
     private var movieResult = emptyList<MovieResult>()
 
-    class MyViewHolder(var binding: ItemListMovieBinding) :
+    class MyViewHolder(private val binding: ItemListMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemListMovieBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
-            }
+        fun bind(movieResult: MovieResult) {
+            binding.movieResult = movieResult
+            binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+        val binding = ItemListMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentMovie = movieResult[position]
-        holder.binding.movieResult = currentMovie
-        holder.binding.executePendingBindings()
+        holder.bind(currentMovie)
     }
 
     override fun getItemCount(): Int = movieResult.size
