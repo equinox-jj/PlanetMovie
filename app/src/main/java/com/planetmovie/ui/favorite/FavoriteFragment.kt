@@ -37,7 +37,8 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         val viewPagerAdapter = ViewPagerAdapter(
             bundle,
             fragments,
-            requireActivity()
+            requireActivity().supportFragmentManager,
+            viewLifecycleOwner.lifecycle
         )
 
         binding.vpDetail.apply { adapter = viewPagerAdapter }
