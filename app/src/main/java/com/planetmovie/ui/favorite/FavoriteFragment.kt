@@ -41,7 +41,9 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
             viewLifecycleOwner.lifecycle
         )
 
-        binding.vpDetail.apply { adapter = viewPagerAdapter }
+        binding.apply {
+            vpDetail.adapter = viewPagerAdapter
+        }
 
         TabLayoutMediator(binding.tlDetailFavorite, binding.vpDetail) { tab, position ->
             tab.text = titles[position]

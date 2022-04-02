@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.planetmovie.R
 import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentMovieBinding
@@ -61,14 +60,12 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
             mPopularAdapter = ItemMovieListAdapter()
             adapter = mPopularAdapter
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvUpcomingMovie.apply {
             mUpcomingAdapter = ItemMovieListAdapter()
             adapter = mUpcomingAdapter
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 

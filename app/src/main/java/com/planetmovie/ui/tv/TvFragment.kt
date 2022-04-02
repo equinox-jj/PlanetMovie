@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.planetmovie.R
 import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentTvBinding
@@ -62,16 +61,12 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
             mPopularAdapter = ItemTvListAdapter()
             adapter = mPopularAdapter
             setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         binding.rvTopRatedTv.apply {
             mTopRatedAdapter = ItemTvListAdapter()
             adapter = mTopRatedAdapter
             setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
