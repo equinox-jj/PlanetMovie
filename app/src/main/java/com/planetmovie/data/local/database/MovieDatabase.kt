@@ -10,13 +10,13 @@ import com.planetmovie.data.local.entity.*
         MovieNowPlayingEntity::class,
         MoviePopularEntity::class,
         MovieUpcomingEntity::class,
-//        MovieFavoriteEntity::class,
+        MovieFavoriteEntity::class,
         TvAiringTodayEntity::class,
         TvPopularEntity::class,
-        TvTopRatedEntity::class
-//        TvFavoriteEntity::class
+        TvTopRatedEntity::class,
+        TvFavoriteEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(MovieTypeConverter::class)

@@ -34,5 +34,9 @@
     <string name="image_trailer">Image Trailer</string>
     <string name="overview_not_available">Overview Not Available</string>
     <string name="image_slider_movie">Image Slider Movie</string>
+    <string name="fab_favorite_movie">Fab Favorite Movie</string>
+    <string name="fab_favorite_tv">Fab Favorite Tv</string>
+    <string name="delete">Delete</string>
+    <string name="fab_movie_detail">Fab Movie Detail</string>
 
 </resources>

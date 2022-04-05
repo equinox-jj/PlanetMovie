@@ -3,15 +3,23 @@ package com.planetmovie.util
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.planetmovie.R
+import com.planetmovie.data.local.entity.MovieFavoriteEntity
+import com.planetmovie.data.local.entity.TvFavoriteEntity
 import com.planetmovie.data.remote.model.MovieCast
 import com.planetmovie.data.remote.model.MovieResult
 import com.planetmovie.data.remote.model.MovieVideosResult
+import com.planetmovie.ui.adapter.ItemFavoriteMovieAdapter
+import com.planetmovie.ui.adapter.ItemFavoriteTvAdapter
 import com.planetmovie.ui.movie.MovieFragmentDirections
 import com.planetmovie.ui.searchmovie.SearchMovieFragmentDirections
 import com.planetmovie.ui.searchtv.SearchTvFragmentDirections
@@ -46,6 +54,17 @@ class BindingAdapter {
             }
         }
 
+        @BindingAdapter("android:navigateMovieToFavoriteMovie")
+        @JvmStatic
+        fun navigateMovieToFavoriteMovie(view: FloatingActionButton, navigate: Boolean) {
+            view.setOnClickListener {
+                if (navigate) {
+                    val action = MovieFragmentDirections.actionMovieFragmentToFavoriteMovieFragment()
+                    view.findNavController().navigate(action)
+                }
+            }
+        }
+
         @BindingAdapter("android:navigateTvToDetail")
         @JvmStatic
         fun navigateTvToDetail(view: CardView, tvId: Int) {
@@ -61,6 +80,17 @@ class BindingAdapter {
             view.setOnClickListener {
                 val action = SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
                 view.findNavController().navigate(action)
+            }
+        }
+
+        @BindingAdapter("android:navigateTvToFavoriteTv")
+        @JvmStatic
+        fun navigateTvToFavoriteTv(view: FloatingActionButton, navigate: Boolean) {
+            view.setOnClickListener {
+                if (navigate) {
+                    val action = TvFragmentDirections.actionTvFragmentToFavoriteTvFragment()
+                    view.findNavController().navigate(action)
+                }
             }
         }
 
@@ -122,16 +152,106 @@ class BindingAdapter {
             }
         }
 
+        @BindingAdapter("android:favMoviePosterPath")
+        @JvmStatic
+        fun favMoviePosterPath(imageView: ImageView, favMovieEntity: MovieFavoriteEntity) {
+            imageView.load(BASE_IMG_URL_POSTER + favMovieEntity.posterPath) {
+                crossfade(300)
+                error(R.drawable.ic_no_image)
+            }
+        }
+
+        @BindingAdapter("android:favTvPosterPath")
+        @JvmStatic
+        fun favTvPosterPath(imageView: ImageView, favTvEntity: TvFavoriteEntity) {
+            imageView.load(BASE_IMG_URL_POSTER + favTvEntity.posterPath) {
+                crossfade(300)
+                error(R.drawable.ic_no_image)
+            }
+        }
+
         @BindingAdapter("android:trailerCLick")
         @JvmStatic
         fun trailerClick(cardView: CardView, trailerResult: MovieVideosResult) {
             cardView.setOnClickListener {
-                val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL_APP + trailerResult.key))
-                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL + trailerResult.key))
+                val appIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL_APP + trailerResult.key))
+                val webIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL + trailerResult.key))
                 try {
                     it.context?.startActivity(appIntent)
                 } catch (ex: ActivityNotFoundException) {
                     it.context?.startActivity(webIntent)
+                }
+            }
+        }
+
+        @BindingAdapter("android:no_favorite_movie_data", "android:favorite_movie_data", requireAll = false)
+        @JvmStatic
+        fun setMovieDataAndViewVisibility(
+            view: View,
+            movieFavoriteEntity: List<MovieFavoriteEntity>?,
+            mAdapter: ItemFavoriteMovieAdapter?
+        ) {
+            if (movieFavoriteEntity.isNullOrEmpty()) {
+                when (view) {
+                    is ImageView -> {
+                        view.visibility = View.VISIBLE
+                    }
+                    is TextView -> {
+                        view.visibility = View.VISIBLE
+                    }
+                    is RecyclerView -> {
+                        view.visibility = View.INVISIBLE
+                    }
+                }
+            } else {
+                when (view) {
+                    is ImageView -> {
+                        view.visibility = View.INVISIBLE
+                    }
+                    is TextView -> {
+                        view.visibility = View.INVISIBLE
+                    }
+                    is RecyclerView -> {
+                        view.visibility = View.VISIBLE
+                        mAdapter?.newData(movieFavoriteEntity)
+                    }
+                }
+            }
+        }
+
+        @BindingAdapter("android:no_favorite_tv_data", "android:favorite_tv_data", requireAll = false)
+        @JvmStatic
+        fun setFavDataAndViewVisibility(
+            view: View,
+            tvFavoriteEntity: List<TvFavoriteEntity>?,
+            mAdapter: ItemFavoriteTvAdapter?
+        ) {
+            if (tvFavoriteEntity.isNullOrEmpty()) {
+                when (view) {
+                    is ImageView -> {
+                        view.visibility = View.VISIBLE
+                    }
+                    is TextView -> {
+                        view.visibility = View.VISIBLE
+                    }
+                    is RecyclerView -> {
+                        view.visibility = View.INVISIBLE
+                    }
+                }
+            } else {
+                when (view) {
+                    is ImageView -> {
+                        view.visibility = View.INVISIBLE
+                    }
+                    is TextView -> {
+                        view.visibility = View.INVISIBLE
+                    }
+                    is RecyclerView -> {
+                        view.visibility = View.VISIBLE
+                        mAdapter?.newData(tvFavoriteEntity)
+                    }
                 }
             }
         }

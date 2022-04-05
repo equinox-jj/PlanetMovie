@@ -6,21 +6,14 @@ import com.planetmovie.util.Constant.Companion.MOVIE_FAVORITE_TABLE
 
 @Entity(tableName = MOVIE_FAVORITE_TABLE)
 class MovieFavoriteEntity(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     var id: Int,
-    val adult: Boolean,
-    val backdropPath: String,
-    val homepage: String,
-    val imdbId: String,
-    val originalLanguage: String,
-    val originalTitle: String,
     val overview: String,
-    val popularity: Double,
+    val backdropPath: String,
     val posterPath: String,
-    val releaseDate: String,
     val title: String,
     val voteAverage: Double,
     val voteCount: Int,
-    val tvFirstAirDate: String,
-    val tvName: String,
+    val popularity: Double,
+    val releaseDate: String,
 )

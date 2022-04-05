@@ -16,6 +16,13 @@
         <action
             android:id="@+id/action_movieFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_movieFragment_to_favoriteMovieFragment"
+            app:destination="@id/favoriteMovieFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
@@ -29,14 +36,31 @@
         <action
             android:id="@+id/action_tvFragment_to_tvDetailFragment"
             app:destination="@id/tvDetailFragment" />
+        <action
+            android:id="@+id/action_tvFragment_to_favoriteTvFragment"
+            app:destination="@id/favoriteTvFragment" />
     </fragment>
 
 
     <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.planetmovie.ui.favorite.FavoriteFragment"
-        android:label="Favorite"
-        tools:layout="@layout/fragment_favorite" />
+        android:id="@+id/favoriteMovieFragment"
+        android:name="com.planetmovie.ui.favorite_movie.FavoriteMovieFragment"
+        android:label="Favorite Movie"
+        tools:layout="@layout/fragment_favorite_movie" >
+        <action
+            android:id="@+id/action_favoriteMovieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteTvFragment"
+        android:name="com.planetmovie.ui.favorite_tv.FavoriteTvFragment"
+        android:label="Favorite Tv"
+        tools:layout="@layout/fragment_favorite_tv" >
+        <action
+            android:id="@+id/action_favoriteTvFragment_to_tvDetailFragment"
+            app:destination="@id/tvDetailFragment" />
+    </fragment>
 
 
     <fragment

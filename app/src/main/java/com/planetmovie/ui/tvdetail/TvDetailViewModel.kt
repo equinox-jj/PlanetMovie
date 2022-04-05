@@ -4,13 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.planetmovie.data.Repository
 import com.planetmovie.data.Resource
+import com.planetmovie.data.local.entity.TvFavoriteEntity
 import com.planetmovie.data.remote.model.MovieDetailResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -24,23 +24,17 @@ constructor(
 ) : AndroidViewModel(application) {
 
     /* ROOM DATABASE */
-//    val readFavoriteTv: LiveData<List<TvFavoriteEntity>> = repository.localData.readFavoriteTv().asLiveData()
+    val getFavoriteTv: LiveData<List<TvFavoriteEntity>> = repository.localData.getFavoriteTv().asLiveData()
 
-//    fun insertFavoriteTv(tvFavoriteEntity: TvFavoriteEntity) =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.localData.insertFavoriteTv(tvFavoriteEntity)
-//        }
+    fun insertFavoriteTv(movieDetailResponse: MovieDetailResponse) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localData.insertFavoriteTv(movieDetailResponse)
+        }
 
-//    fun deleteFavoriteTv(tvFavoriteEntity: TvFavoriteEntity) =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.localData.deleteFavoriteTv(tvFavoriteEntity)
-//        }
-
-//    fun deleteAllFavoriteTv() =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.localData.deleteAllFavoriteTv()
-//        }
-
+    fun deleteFavoriteTv(tvId: Int) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localData.deleteFavoriteTv(tvId)
+        }
 
     /* RETROFIT */
     var tvDetail: MutableLiveData<Resource<MovieDetailResponse>> = MutableLiveData()

@@ -12,11 +12,6 @@
         android:title="@string/tv" />
 
     <item
-        android:id="@+id/favoriteFragment"
-        android:icon="@drawable/ic_favorite"
-        android:title="@string/favorite" />
-
-    <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_person"
         android:title="@string/about" />

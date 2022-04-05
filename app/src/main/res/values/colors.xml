@@ -11,5 +11,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#574D4D</color>
     <color name="gray_black">#493E3E</color>
+    <color name="red">#FF0000</color>
+    <color name="pink">#DF4C4C</color>
 
 </resources>

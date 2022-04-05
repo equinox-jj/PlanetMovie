@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.planetmovie.data.local.entity.TvAiringTodayEntity
+import com.planetmovie.data.local.entity.TvFavoriteEntity
 import com.planetmovie.data.local.entity.TvPopularEntity
 import com.planetmovie.data.local.entity.TvTopRatedEntity
 import kotlinx.coroutines.flow.Flow
@@ -32,15 +33,15 @@ interface TvDao {
     fun readTvTopRated(): Flow<List<TvTopRatedEntity>>
 
     // TV FAVORITE ENTITY
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertFavoriteTv(tvFavoriteEntity: TvFavoriteEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFavoriteTv(tvFavoriteEntity: TvFavoriteEntity)
 
-//    @Query("SELECT * FROM tv_favorite_table ORDER BY id ASC")
-//    fun readFavoriteTv(): Flow<List<TvFavoriteEntity>>
+    @Query("SELECT * FROM tv_favorite_table ORDER BY id ASC")
+    fun getFavoriteTv(): Flow<List<TvFavoriteEntity>>
 
-//    @Delete
-//    suspend fun deleteFavoriteTv(tvFavoriteEntity: TvFavoriteEntity)
+    @Query("DELETE FROM tv_favorite_table WHERE id = :tvId")
+    suspend fun deleteFavoriteTv(tvId: Int)
 
-//    @Query("DELETE FROM tv_favorite_table")
-//    suspend fun deleteAllFavoriteTv()
+    @Query("DELETE FROM tv_favorite_table")
+    suspend fun deleteAllFavoriteTv()
 }

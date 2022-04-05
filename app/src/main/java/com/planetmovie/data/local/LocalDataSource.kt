@@ -3,6 +3,9 @@ package com.planetmovie.data.local
 import com.planetmovie.data.local.database.MovieDao
 import com.planetmovie.data.local.database.TvDao
 import com.planetmovie.data.local.entity.*
+import com.planetmovie.data.remote.model.MovieDetailResponse
+import com.planetmovie.util.mapMovieDetailToMovieFavoriteEntity
+import com.planetmovie.util.mapTvDetailToTvFavoriteEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -38,21 +41,21 @@ constructor(
     }
 
     // FAVORITE MOVIE
-//    fun readFavoriteMovie(): Flow<List<MovieFavoriteEntity>> {
-//        return movieDao.readFavoriteMovie()
-//    }
+    fun getFavoriteMovie(): Flow<List<MovieFavoriteEntity>> {
+        return movieDao.getFavoriteMovie()
+    }
 
-//    suspend fun insertFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity) {
-//        movieDao.insertFavoriteMovie(movieFavoriteEntity)
-//    }
+    suspend fun insertFavoriteMovie(movieDetailResponse: MovieDetailResponse) {
+        movieDao.insertFavoriteMovie(movieDetailResponse.mapMovieDetailToMovieFavoriteEntity())
+    }
 
-//    suspend fun deleteFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity) {
-//        movieDao.deleteFavoriteMovie(movieFavoriteEntity)
-//    }
+    suspend fun deleteFavoriteMovie(movieId: Int) {
+        movieDao.deleteFavoriteMovie(movieId)
+    }
 
-//    suspend fun deleteAllFavoriteMovie() {
-//        movieDao.deleteAllFavoriteMovie()
-//    }
+    suspend fun deleteAllFavoriteMovie() {
+        movieDao.deleteAllFavoriteMovie()
+    }
 
     // TV LOCAL DATABASE
     fun readTvAiringToday(): Flow<List<TvAiringTodayEntity>> {
@@ -80,19 +83,19 @@ constructor(
     }
 
     // FAVORITE TV
-//    fun readFavoriteTv(): Flow<List<TvFavoriteEntity>> {
-//        return tvDao.readFavoriteTv()
-//    }
-//
-//    suspend fun insertFavoriteTv(tvFavoriteEntity: TvFavoriteEntity) {
-//        tvDao.insertFavoriteTv(tvFavoriteEntity)
-//    }
-//
-//    suspend fun deleteFavoriteTv(tvFavoriteEntity: TvFavoriteEntity) {
-//        tvDao.deleteFavoriteTv(tvFavoriteEntity)
-//    }
-//
-//    suspend fun deleteAllFavoriteTv() {
-//        tvDao.deleteAllFavoriteTv()
-//    }
+    fun getFavoriteTv(): Flow<List<TvFavoriteEntity>> {
+        return tvDao.getFavoriteTv()
+    }
+
+    suspend fun insertFavoriteTv(movieDetailResponse: MovieDetailResponse) {
+        tvDao.insertFavoriteTv(movieDetailResponse.mapTvDetailToTvFavoriteEntity())
+    }
+
+    suspend fun deleteFavoriteTv(tvId: Int) {
+        tvDao.deleteFavoriteTv(tvId)
+    }
+
+    suspend fun deleteAllFavoriteTv() {
+        tvDao.deleteAllFavoriteTv()
+    }
 }

@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.planetmovie.data.local.entity.MovieFavoriteEntity
 import com.planetmovie.data.local.entity.MovieNowPlayingEntity
 import com.planetmovie.data.local.entity.MoviePopularEntity
 import com.planetmovie.data.local.entity.MovieUpcomingEntity
@@ -32,15 +33,15 @@ interface MovieDao {
     fun readMovieUpcoming(): Flow<List<MovieUpcomingEntity>>
 
     // MOVIE FAVORITE ENTITY
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity)
 
-//    @Query("SELECT * FROM movie_favorite_table ORDER BY id ASC")
-//    fun readFavoriteMovie(): Flow<List<MovieFavoriteEntity>>
+    @Query("SELECT * FROM movie_favorite_table ORDER BY id ASC")
+    fun getFavoriteMovie(): Flow<List<MovieFavoriteEntity>>
 
-//    @Delete
-//    suspend fun deleteFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity)
+    @Query("DELETE FROM movie_favorite_table WHERE id = :movieId")
+    suspend fun deleteFavoriteMovie(movieId: Int)
 
-//    @Query("DELETE FROM movie_favorite_table")
-//    suspend fun deleteAllFavoriteMovie()
+    @Query("DELETE FROM movie_favorite_table")
+    suspend fun deleteAllFavoriteMovie()
 }

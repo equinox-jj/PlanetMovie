@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.searchTvFragment -> hideBottomNav()
                 R.id.movieDetailFragment -> hideBottomNav()
                 R.id.tvDetailFragment -> hideBottomNav()
+                R.id.favoriteMovieFragment -> hideBottomNav()
+                R.id.favoriteTvFragment -> hideBottomNav()
                 else -> showBottomNav()
             }
         }
@@ -45,7 +47,6 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.movieFragment,
                 R.id.tvFragment,
-                R.id.favoriteFragment,
                 R.id.aboutFragment
             )
         )

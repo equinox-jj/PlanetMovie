@@ -1,13 +1,14 @@
 package com.planetmovie.ui.moviedetail
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import com.planetmovie.R
 import com.planetmovie.data.Resource
 import com.planetmovie.data.remote.model.MovieDetailResponse
@@ -31,20 +32,22 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private val mMovieDetailCastAdapter: ItemCastAdapter by lazy { ItemCastAdapter() }
     private val mMovieDetailTrailerAdapter: ItemTrailerAdapter by lazy { ItemTrailerAdapter() }
 
+    // Favorite Movie
+    private var movieSaved = false
+    private var savedMovieId = 0
+
     // Shimmer Loading
     private var isShimmerLoading: Boolean = false
 
     // Navigation Args
     private val args by navArgs<MovieDetailFragmentArgs>()
 
-    // Favorite Menu
-    private lateinit var favMenuItem: MenuItem
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMovieDetailBinding.bind(view)
         setupRecycler()
         observeViewModel()
+        checkSavedFavoriteMovies()
     }
 
     private fun setupRecycler() {
@@ -81,31 +84,74 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun detailData(data: MovieDetailResponse) {
-        data.let {
+        data.let { detailResponse ->
             binding.apply {
-                val rating = "${it.voteAverage} / 10"
-                rbDtlOne.rating = it.voteAverage.div(2).toFloat()
-                tvDtlDate.text = it.releaseDate
+                val rating = "${detailResponse.voteAverage} / 10"
+                rbDtlOne.rating = detailResponse.voteAverage.div(2).toFloat()
+                tvDtlDate.text = detailResponse.releaseDate
                 tvDtlRate.text = rating
-                ivDtlMovieBackdrop.load(Constant.BASE_IMG_URL_BACKDROP + it.backdropPath) {
+                ivDtlMovieBackdrop.load(Constant.BASE_IMG_URL_BACKDROP + detailResponse.backdropPath) {
                     crossfade(300)
                     error(R.drawable.ic_no_image)
                 }
-                ivDtlPoster.load(Constant.BASE_IMG_URL_POSTER + it.posterPath) {
+                ivDtlPoster.load(Constant.BASE_IMG_URL_POSTER + detailResponse.posterPath) {
                     crossfade(300)
                     error(R.drawable.ic_no_image)
                 }
-                if (it.overview.isNotEmpty()) {
-                    tvDtlOverview.text = it.overview
+                if (detailResponse.overview.isNotEmpty()) {
+                    tvDtlOverview.text = detailResponse.overview
                 } else tvDtlOverview.text = getString(R.string.overview_not_available)
-                if (it.movieCredits.movieCast.isNotEmpty()) {
-                    mMovieDetailCastAdapter.castDiffUtil(it.movieCredits)
+                if (detailResponse.movieCredits.movieCast.isNotEmpty()) {
+                    mMovieDetailCastAdapter.castDiffUtil(detailResponse.movieCredits)
                 } else tvCast.visibility = View.GONE
-                if (it.movieVideos.movieVideoResults.isNotEmpty()) {
-                    mMovieDetailTrailerAdapter.trailerDiffUtil(it.movieVideos)
+                if (detailResponse.movieVideos.movieVideoResults.isNotEmpty()) {
+                    mMovieDetailTrailerAdapter.trailerDiffUtil(detailResponse.movieVideos)
                 } else tvTrailer.visibility = View.GONE
+
+                /** FAVORITE MOVIE*/
+                binding.fabMovieDetail.setOnClickListener {
+                    movieSaved = if (!movieSaved) {
+                        mMovieDetailViewModel.insertFavoriteMovie(detailResponse)
+                        showSnackBarFavorite("Movie Saved.")
+                        changeFabColor(R.color.red)
+                        true
+                    } else {
+                        mMovieDetailViewModel.deleteFavoriteMovie(detailResponse.id)
+                        showSnackBarFavorite("Movie Removed.")
+                        changeFabColor(R.color.white)
+                        false
+                    }
+                }
             }
         }
+    }
+
+    /** FAVORITE MOVIE*/
+    private fun checkSavedFavoriteMovies() {
+        mMovieDetailViewModel.getFavoriteMovie.observe(viewLifecycleOwner) { favoriteMoviesEntity ->
+            try {
+                for (savedMovie in favoriteMoviesEntity) {
+                    if (savedMovie.id == args.movieId) {
+                        changeFabColor(R.color.red)
+                        savedMovieId = savedMovie.id
+                        movieSaved = true
+                    }
+                }
+            } catch (e: Exception) {
+            }
+        }
+    }
+
+    private fun changeFabColor(color: Int) {
+        binding.fabMovieDetail.supportImageTintList = ContextCompat.getColorStateList(requireContext(), color)
+    }
+
+    private fun showSnackBarFavorite(message: String) {
+        Snackbar.make(
+            binding.movieDetailLayout,
+            message,
+            Snackbar.LENGTH_SHORT
+        ).setAction("Okay") { }.show()
     }
 
     private fun showShimmer(boolean: Boolean) {
@@ -114,6 +160,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 isShimmerLoading = true
                 shimmerDetailMovie.startShimmer()
                 shimmerDetailMovie.visibility = View.VISIBLE
+                fabMovieDetail.visibility = View.GONE
                 ivDtlMovieBackdrop.visibility = View.GONE
                 shadowBackdrop.visibility = View.GONE
                 ivDtlPoster.visibility = View.GONE
@@ -132,6 +179,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 isShimmerLoading = false
                 shimmerDetailMovie.stopShimmer()
                 shimmerDetailMovie.visibility = View.GONE
+                fabMovieDetail.visibility = View.VISIBLE
                 ivDtlMovieBackdrop.visibility = View.VISIBLE
                 shadowBackdrop.visibility = View.VISIBLE
                 ivDtlPoster.visibility = View.VISIBLE

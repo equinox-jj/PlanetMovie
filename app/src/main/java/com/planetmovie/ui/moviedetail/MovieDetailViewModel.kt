@@ -4,13 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.planetmovie.data.Repository
 import com.planetmovie.data.Resource
+import com.planetmovie.data.local.entity.MovieFavoriteEntity
 import com.planetmovie.data.remote.model.MovieDetailResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -24,22 +24,17 @@ constructor(
 ) : AndroidViewModel(application) {
 
     /* ROOM DATABASE */
-//    val readFavoriteMovie: LiveData<List<MovieFavoriteEntity>> = repository.localData.readFavoriteMovie().asLiveData()
+    val getFavoriteMovie: LiveData<List<MovieFavoriteEntity>> = repository.localData.getFavoriteMovie().asLiveData()
 
-//    fun insertFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity) =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.localData.insertFavoriteMovie(movieFavoriteEntity)
-//        }
+    fun insertFavoriteMovie(movieDetailResponse: MovieDetailResponse) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localData.insertFavoriteMovie(movieDetailResponse)
+        }
 
-//    fun deleteFavoriteMovie(movieFavoriteEntity: MovieFavoriteEntity) =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.localData.deleteFavoriteMovie(movieFavoriteEntity)
-//        }
-
-//    fun deleteAllFavoriteMovie() =
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.localData.deleteAllFavoriteMovie()
-//        }
+    fun deleteFavoriteMovie(movieId: Int) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localData.deleteFavoriteMovie(movieId)
+        }
 
     /* RETROFIT*/
     var movieDetail: MutableLiveData<Resource<MovieDetailResponse>> = MutableLiveData()
