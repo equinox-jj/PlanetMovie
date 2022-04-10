@@ -26,6 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/menu_bott_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

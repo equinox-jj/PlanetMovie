@@ -212,8 +212,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 tvMovieThree.visibility = View.GONE
                 rvPopularMovie.visibility = View.GONE
                 rvUpcomingMovie.visibility = View.GONE
-                binding.sliderMovie.visibility = View.GONE
-                binding.sliderIndicatorMovie.visibility = View.GONE
+                sliderMovie.visibility = View.GONE
+                sliderIndicatorMovie.visibility = View.GONE
             } else {
                 isShimmerLoading = false
                 shimmerRvMovie.stopShimmer()
@@ -223,8 +223,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 tvMovieThree.visibility = View.VISIBLE
                 rvPopularMovie.visibility = View.VISIBLE
                 rvUpcomingMovie.visibility = View.VISIBLE
-                binding.sliderMovie.visibility = View.VISIBLE
-                binding.sliderIndicatorMovie.visibility = View.VISIBLE
+                sliderMovie.visibility = View.VISIBLE
+                sliderIndicatorMovie.visibility = View.VISIBLE
             }
         }
 
