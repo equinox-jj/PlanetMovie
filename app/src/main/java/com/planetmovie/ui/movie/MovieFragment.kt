@@ -227,7 +227,6 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 sliderIndicatorMovie.visibility = View.VISIBLE
             }
         }
-
     }
 
     override fun onDestroyView() {

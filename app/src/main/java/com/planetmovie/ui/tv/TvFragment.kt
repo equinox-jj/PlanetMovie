@@ -78,7 +78,6 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
             networkListener.checkNetworkAvailability(requireContext())
                 .collect { status ->
                     mSharedViewModel.networkStatus = status
-                    mSharedViewModel.showNetworkStatus()
                     readDatabase()
                 }
         }
@@ -210,10 +209,10 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 tvTvOne.visibility = View.GONE
                 tvTvTwo.visibility = View.GONE
                 tvTvThree.visibility = View.GONE
-                rvPopularTv.visibility = View.GONE
-                rvTopRatedTv.visibility = View.GONE
                 sliderTv.visibility = View.GONE
                 sliderIndicatorTv.visibility = View.GONE
+                rvPopularTv.visibility = View.GONE
+                rvTopRatedTv.visibility = View.GONE
             } else {
                 isShimmerLoading = false
                 shimmerRvTv.stopShimmer()
@@ -221,13 +220,12 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 tvTvOne.visibility = View.VISIBLE
                 tvTvTwo.visibility = View.VISIBLE
                 tvTvThree.visibility = View.VISIBLE
-                rvPopularTv.visibility = View.VISIBLE
-                rvTopRatedTv.visibility = View.VISIBLE
                 sliderTv.visibility = View.VISIBLE
                 sliderIndicatorTv.visibility = View.VISIBLE
+                rvPopularTv.visibility = View.VISIBLE
+                rvTopRatedTv.visibility = View.VISIBLE
             }
         }
-
     }
 
     override fun onDestroyView() {
