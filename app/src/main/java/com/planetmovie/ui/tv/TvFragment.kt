@@ -46,7 +46,6 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.mTvViewModel = mTvViewModel
 
-
         setupRecycler()
         readBackOnline()
     }

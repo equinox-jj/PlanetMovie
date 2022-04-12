@@ -27,12 +27,9 @@ constructor(
 
     /** ROOM DATABASE
      * VARIABLE*/
-    val readTvAiringToday: LiveData<List<TvAiringTodayEntity>> =
-        repository.localData.readTvAiringToday().asLiveData()
-    val readTvPopular: LiveData<List<TvPopularEntity>> =
-        repository.localData.readTvPopular().asLiveData()
-    val readTvTopRated: LiveData<List<TvTopRatedEntity>> =
-        repository.localData.readTvTopRated().asLiveData()
+    val readTvAiringToday: LiveData<List<TvAiringTodayEntity>> = repository.localData.readTvAiringToday().asLiveData()
+    val readTvPopular: LiveData<List<TvPopularEntity>> = repository.localData.readTvPopular().asLiveData()
+    val readTvTopRated: LiveData<List<TvTopRatedEntity>> = repository.localData.readTvTopRated().asLiveData()
 
     private fun insertTvAiringToday(tvAiringTodayEntity: TvAiringTodayEntity) =
         viewModelScope.launch(Dispatchers.IO) {
@@ -158,8 +155,7 @@ constructor(
 
     /** TO CHECK THE CONNECTIVITY*/
     private fun hasConnectivity(): Boolean {
-        val connectivityManager =
-            getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager = getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
         return when {

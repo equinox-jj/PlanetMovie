@@ -12,8 +12,7 @@ class NetworkListener : ConnectivityManager.NetworkCallback() {
 
     fun checkNetworkAvailability(context: Context): MutableStateFlow<Boolean> {
 
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.registerDefaultNetworkCallback(this)
 
         val network = connectivityManager.activeNetwork
