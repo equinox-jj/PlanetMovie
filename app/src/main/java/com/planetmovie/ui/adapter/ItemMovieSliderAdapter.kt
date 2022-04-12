@@ -16,25 +16,23 @@ class ItemMovieSliderAdapter : CardSliderAdapter<ItemMovieSliderAdapter.MovieSli
 
     class MovieSlideViewHolder(var binding: ItemListMovieSliderBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        companion object {
-            fun from(parent: ViewGroup): MovieSlideViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemListMovieSliderBinding.inflate(layoutInflater, parent, false)
-                return MovieSlideViewHolder(binding)
-            }
+        fun bind(movieResult: MovieResult) {
+            binding.movieResult = movieResult
+            binding.executePendingBindings()
         }
     }
 
     override fun bindVH(holder: MovieSlideViewHolder, position: Int) {
         val currentMovieSlider = movieResult[position]
-        holder.binding.movieResult = currentMovieSlider
-        holder.binding.executePendingBindings()
+        holder.bind(currentMovieSlider)
     }
 
     override fun getItemCount(): Int = movieResult.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSlideViewHolder {
-        return MovieSlideViewHolder.from(parent)
+        val binding =
+            ItemListMovieSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieSlideViewHolder(binding)
     }
 
     fun movieDiffUtil(newData: MovieResponse) {
