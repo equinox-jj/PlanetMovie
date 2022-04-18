@@ -114,7 +114,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     }
 
     private fun readApiResponse() {
-        mMovieViewModel.getMovieNowPlaying()
+        mMovieViewModel.getMoviesNowPlaying()
         mMovieViewModel.movieNowPlaying.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -136,7 +136,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
             }
         }
 
-        mMovieViewModel.getMoviePopular()
+        mMovieViewModel.getMoviesPopular()
         mMovieViewModel.moviePopular.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -158,7 +158,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
             }
         }
 
-        mMovieViewModel.getMovieUpcoming()
+        mMovieViewModel.getMoviesUpcoming()
         mMovieViewModel.movieUpcoming.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {

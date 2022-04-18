@@ -14,6 +14,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/ivNoInternet"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:alpha="0.6"
+            android:contentDescription="@string/image_no_internet_connection"
+            android:movie_now_paying_response="@{mMovieViewModel.movieNowPlaying}"
+            android:movie_playing_entity="@{mMovieViewModel.readMoviesNowPlaying}"
+            android:movie_popular_entity="@{mMovieViewModel.readMoviesPopular}"
+            android:movie_popular_response="@{mMovieViewModel.moviePopular}"
+            android:movie_upcoming_entity="@{mMovieViewModel.readMoviesUpcoming}"
+            android:movie_upcoming_response="@{mMovieViewModel.movieUpcoming}"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_no_internet" />
+
+        <TextView
+            android:id="@+id/tvNoInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivNoInternet"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:alpha="0.6"
+            android:movie_now_paying_response="@{mMovieViewModel.movieNowPlaying}"
+            android:movie_playing_entity="@{mMovieViewModel.readMoviesNowPlaying}"
+            android:movie_popular_entity="@{mMovieViewModel.readMoviesPopular}"
+            android:movie_popular_response="@{mMovieViewModel.moviePopular}"
+            android:movie_upcoming_entity="@{mMovieViewModel.readMoviesUpcoming}"
+            android:movie_upcoming_response="@{mMovieViewModel.movieUpcoming}"
+            android:text="@string/no_internet_connection"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabFavoriteMovie"
             android:layout_width="wrap_content"
@@ -37,35 +72,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivNoInternet"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:alpha="0.6"
-                    android:contentDescription="@string/image_no_internet_connection"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.50"
-                    app:srcCompat="@drawable/ic_no_internet" />
-
-                <TextView
-                    android:id="@+id/tvNoInternet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:alpha="0.6"
-                    android:text="@string/no_internet_connection"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/ivNoInternet"
-                    app:layout_constraintStart_toStartOf="@+id/ivNoInternet"
-                    app:layout_constraintTop_toBottomOf="@+id/ivNoInternet" />
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/svMovie"

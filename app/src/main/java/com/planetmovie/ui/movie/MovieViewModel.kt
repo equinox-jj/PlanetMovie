@@ -53,7 +53,7 @@ constructor(
     var movieUpcoming: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
     var searchMovie: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
 
-    fun getMovieNowPlaying() = viewModelScope.launch {
+    fun getMoviesNowPlaying() = viewModelScope.launch {
         movieNowPlaying.value = Resource.Loading()
         if (hasConnectivity()) {
             try {
@@ -72,7 +72,7 @@ constructor(
         }
     }
 
-    fun getMoviePopular() = viewModelScope.launch {
+    fun getMoviesPopular() = viewModelScope.launch {
         moviePopular.value = Resource.Loading()
         if (hasConnectivity()) {
             try {
@@ -89,7 +89,7 @@ constructor(
         }
     }
 
-    fun getMovieUpcoming() = viewModelScope.launch {
+    fun getMoviesUpcoming() = viewModelScope.launch {
         movieUpcoming.value = Resource.Loading()
         if (hasConnectivity()) {
             try {
@@ -152,7 +152,8 @@ constructor(
 
     /** TO CHECK THE CONNECTIVITY*/
     private fun hasConnectivity(): Boolean {
-        val connectivityManager = getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
         return when {

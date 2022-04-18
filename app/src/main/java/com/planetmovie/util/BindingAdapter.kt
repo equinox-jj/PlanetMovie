@@ -7,15 +7,17 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.planetmovie.R
-import com.planetmovie.data.local.entity.MovieFavoriteEntity
-import com.planetmovie.data.local.entity.TvFavoriteEntity
+import com.planetmovie.data.Resource
+import com.planetmovie.data.local.entity.*
 import com.planetmovie.data.remote.model.MovieCast
+import com.planetmovie.data.remote.model.MovieResponse
 import com.planetmovie.data.remote.model.MovieResult
 import com.planetmovie.data.remote.model.MovieVideosResult
 import com.planetmovie.ui.adapter.ItemFavoriteMovieAdapter
@@ -39,7 +41,8 @@ class BindingAdapter {
         @JvmStatic
         fun navigateMovieToDetail(view: CardView, movieId: Int) {
             view.setOnClickListener {
-                val action = MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
+                val action =
+                    MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
                 view.findNavController().navigate(action)
 
             }
@@ -49,7 +52,10 @@ class BindingAdapter {
         @JvmStatic
         fun navigateSearchMovieToDetail(view: CardView, movieId: Int) {
             view.setOnClickListener {
-                val action = SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailFragment(movieId)
+                val action =
+                    SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailFragment(
+                        movieId
+                    )
                 view.findNavController().navigate(action)
             }
         }
@@ -59,7 +65,8 @@ class BindingAdapter {
         fun navigateMovieToFavoriteMovie(view: FloatingActionButton, navigate: Boolean) {
             view.setOnClickListener {
                 if (navigate) {
-                    val action = MovieFragmentDirections.actionMovieFragmentToFavoriteMovieFragment()
+                    val action =
+                        MovieFragmentDirections.actionMovieFragmentToFavoriteMovieFragment()
                     view.findNavController().navigate(action)
                 }
             }
@@ -78,7 +85,8 @@ class BindingAdapter {
         @JvmStatic
         fun navigateSearchTvToDetail(view: CardView, tvId: Int) {
             view.setOnClickListener {
-                val action = SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
+                val action =
+                    SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
                 view.findNavController().navigate(action)
             }
         }
@@ -186,7 +194,11 @@ class BindingAdapter {
             }
         }
 
-        @BindingAdapter("android:no_favorite_movie_data", "android:favorite_movie_data", requireAll = false)
+        @BindingAdapter(
+            "android:no_favorite_movie_data",
+            "android:favorite_movie_data",
+            requireAll = false
+        )
         @JvmStatic
         fun setMovieDataAndViewVisibility(
             view: View,
@@ -221,7 +233,11 @@ class BindingAdapter {
             }
         }
 
-        @BindingAdapter("android:no_favorite_tv_data", "android:favorite_tv_data", requireAll = false)
+        @BindingAdapter(
+            "android:no_favorite_tv_data",
+            "android:favorite_tv_data",
+            requireAll = false
+        )
         @JvmStatic
         fun setFavDataAndViewVisibility(
             view: View,
@@ -252,6 +268,46 @@ class BindingAdapter {
                         view.visibility = View.VISIBLE
                         mAdapter?.newData(tvFavoriteEntity)
                     }
+                }
+            }
+        }
+
+        @BindingAdapter(
+            "android:movie_now_paying_response",
+            "android:movie_popular_response",
+            "android:movie_upcoming_response",
+            "android:movie_playing_entity",
+            "android:movie_popular_entity",
+            "android:movie_upcoming_entity",
+            requireAll = true
+        )
+        @JvmStatic
+        fun movieNoInternetConnection(
+            view: View,
+            movieNowPlayingResponse: Resource<MovieResponse>?,
+            moviePopularResponse: Resource<MovieResponse>?,
+            movieUpcomingResponse: Resource<MovieResponse>?,
+            movieNowPlayingEntity: List<MovieNowPlayingEntity>?,
+            moviePopularEntity: List<MoviePopularEntity>?,
+            movieUpcomingEntity: List<MovieUpcomingEntity>?
+        ) {
+            when (view) {
+                is ImageView -> {
+                    view.isVisible = movieNowPlayingResponse is Resource.Error
+                            && movieNowPlayingEntity.isNullOrEmpty()
+                            && moviePopularResponse is Resource.Error
+                            && moviePopularEntity.isNullOrEmpty()
+                            && movieUpcomingResponse is Resource.Error
+                            && movieUpcomingEntity.isNullOrEmpty()
+                }
+                is TextView -> {
+                    view.isVisible = movieNowPlayingResponse is Resource.Error
+                            && movieNowPlayingEntity.isNullOrEmpty()
+                            && moviePopularResponse is Resource.Error
+                            && moviePopularEntity.isNullOrEmpty()
+                            && movieUpcomingResponse is Resource.Error
+                            && movieUpcomingEntity.isNullOrEmpty()
+                    view.text = movieNowPlayingResponse?.message.toString()
                 }
             }
         }
