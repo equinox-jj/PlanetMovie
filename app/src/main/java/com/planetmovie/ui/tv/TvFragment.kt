@@ -11,7 +11,6 @@ import com.planetmovie.data.Resource
 import com.planetmovie.databinding.FragmentTvBinding
 import com.planetmovie.ui.SharedViewModel
 import com.planetmovie.ui.adapter.ItemTvListAdapter
-import com.planetmovie.ui.adapter.ItemTvSliderAdapter
 import com.planetmovie.util.NetworkListener
 import com.planetmovie.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +28,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
     private val mSharedViewModel: SharedViewModel by viewModels()
 
     // Adapter
-    private lateinit var mAiringTodayAdapter: ItemTvSliderAdapter
+    private lateinit var mAiringTodayAdapter: ItemTvListAdapter
     private lateinit var mPopularAdapter: ItemTvListAdapter
     private lateinit var mTopRatedAdapter: ItemTvListAdapter
 
@@ -51,9 +50,10 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
     }
 
     private fun setupRecycler() {
-        binding.sliderTv.apply {
-            mAiringTodayAdapter = ItemTvSliderAdapter()
+        binding.rvAiringNow.apply {
+            mAiringTodayAdapter = ItemTvListAdapter()
             adapter = mAiringTodayAdapter
+            setHasFixedSize(true)
         }
 
         binding.rvPopularTv.apply {
@@ -209,8 +209,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 tvTvOne.visibility = View.GONE
                 tvTvTwo.visibility = View.GONE
                 tvTvThree.visibility = View.GONE
-                sliderTv.visibility = View.GONE
-                sliderIndicatorTv.visibility = View.GONE
+                rvAiringNow.visibility = View.GONE
                 rvPopularTv.visibility = View.GONE
                 rvTopRatedTv.visibility = View.GONE
             } else {
@@ -220,8 +219,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 tvTvOne.visibility = View.VISIBLE
                 tvTvTwo.visibility = View.VISIBLE
                 tvTvThree.visibility = View.VISIBLE
-                sliderTv.visibility = View.VISIBLE
-                sliderIndicatorTv.visibility = View.VISIBLE
+                rvAiringNow.visibility = View.VISIBLE
                 rvPopularTv.visibility = View.VISIBLE
                 rvTopRatedTv.visibility = View.VISIBLE
             }

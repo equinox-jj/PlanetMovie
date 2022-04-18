@@ -22,7 +22,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
             android:clickable="true"
-            android:contentDescription="Fab Movie"
+            android:contentDescription="@string/fab_movie"
             android:focusable="true"
             android:navigateMovieToFavoriteMovie="@{true}"
             app:srcCompat="@drawable/ic_favorite" />
@@ -110,28 +110,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/svMovie" />
 
-                <com.github.islamkhsh.CardSliderViewPager
-                    android:id="@+id/sliderMovie"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    app:auto_slide_time="5"
-                    app:cardSlider_indicator="@id/sliderIndicatorMovie"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvMovieThree" />
-
-                <com.github.islamkhsh.CardSliderIndicator
-                    android:id="@+id/sliderIndicatorMovie"
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNowPlaying"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
                     android:visibility="gone"
-                    app:indicatorsToShow="4"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sliderMovie" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvMovieThree" />
 
                 <TextView
                     android:id="@+id/tvMovieOne"
@@ -145,7 +135,7 @@
                     android:textStyle="bold"
                     android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/sliderIndicatorMovie" />
+                    app:layout_constraintTop_toBottomOf="@id/rvNowPlaying" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPopularMovie"
