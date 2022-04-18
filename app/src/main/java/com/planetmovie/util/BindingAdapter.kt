@@ -295,17 +295,17 @@ class BindingAdapter {
                 is ImageView -> {
                     view.isVisible = movieNowPlayingResponse is Resource.Error
                             && movieNowPlayingEntity.isNullOrEmpty()
-                            && moviePopularResponse is Resource.Error
+                            || moviePopularResponse is Resource.Error
                             && moviePopularEntity.isNullOrEmpty()
-                            && movieUpcomingResponse is Resource.Error
+                            || movieUpcomingResponse is Resource.Error
                             && movieUpcomingEntity.isNullOrEmpty()
                 }
                 is TextView -> {
                     view.isVisible = movieNowPlayingResponse is Resource.Error
                             && movieNowPlayingEntity.isNullOrEmpty()
-                            && moviePopularResponse is Resource.Error
+                            || moviePopularResponse is Resource.Error
                             && moviePopularEntity.isNullOrEmpty()
-                            && movieUpcomingResponse is Resource.Error
+                            || movieUpcomingResponse is Resource.Error
                             && movieUpcomingEntity.isNullOrEmpty()
                     view.text = movieNowPlayingResponse?.message.toString()
                 }
