@@ -273,10 +273,10 @@ class BindingAdapter {
         }
 
         @BindingAdapter(
-            "android:movie_now_paying_response",
+            "android:movie_now_playing_response",
             "android:movie_popular_response",
             "android:movie_upcoming_response",
-            "android:movie_playing_entity",
+            "android:movie_now_playing_entity",
             "android:movie_popular_entity",
             "android:movie_upcoming_entity",
             requireAll = true
