@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
@@ -41,8 +42,7 @@ class BindingAdapter {
         @JvmStatic
         fun navigateMovieToDetail(view: CardView, movieId: Int) {
             view.setOnClickListener {
-                val action =
-                    MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
+                val action = MovieFragmentDirections.actionMovieFragmentToMovieDetailFragment(movieId)
                 view.findNavController().navigate(action)
 
             }
@@ -52,10 +52,7 @@ class BindingAdapter {
         @JvmStatic
         fun navigateSearchMovieToDetail(view: CardView, movieId: Int) {
             view.setOnClickListener {
-                val action =
-                    SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailFragment(
-                        movieId
-                    )
+                val action = SearchMovieFragmentDirections.actionSearchMovieFragmentToMovieDetailFragment(movieId)
                 view.findNavController().navigate(action)
             }
         }
@@ -65,8 +62,7 @@ class BindingAdapter {
         fun navigateMovieToFavoriteMovie(view: FloatingActionButton, navigate: Boolean) {
             view.setOnClickListener {
                 if (navigate) {
-                    val action =
-                        MovieFragmentDirections.actionMovieFragmentToFavoriteMovieFragment()
+                    val action = MovieFragmentDirections.actionMovieFragmentToFavoriteMovieFragment()
                     view.findNavController().navigate(action)
                 }
             }
@@ -85,8 +81,7 @@ class BindingAdapter {
         @JvmStatic
         fun navigateSearchTvToDetail(view: CardView, tvId: Int) {
             view.setOnClickListener {
-                val action =
-                    SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
+                val action = SearchTvFragmentDirections.actionSearchTvFragmentToTvDetailFragment(tvId)
                 view.findNavController().navigate(action)
             }
         }
@@ -182,10 +177,8 @@ class BindingAdapter {
         @JvmStatic
         fun trailerClick(cardView: CardView, trailerResult: MovieVideosResult) {
             cardView.setOnClickListener {
-                val appIntent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL_APP + trailerResult.key))
-                val webIntent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL + trailerResult.key))
+                val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL_APP + trailerResult.key))
+                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(BASE_TRAILER_URL + trailerResult.key))
                 try {
                     it.context?.startActivity(appIntent)
                 } catch (ex: ActivityNotFoundException) {
@@ -309,6 +302,7 @@ class BindingAdapter {
                             && movieUpcomingEntity.isNullOrEmpty()
                     view.text = movieNowPlayingResponse?.message.toString()
                 }
+                else -> view.isGone
             }
         }
 
