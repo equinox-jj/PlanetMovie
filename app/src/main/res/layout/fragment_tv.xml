@@ -27,6 +27,41 @@
             android:navigateTvToFavoriteTv="@{true}"
             app:srcCompat="@drawable/ic_favorite" />
 
+        <ImageView
+            android:id="@+id/ivNoInternet"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:alpha="0.6"
+            android:contentDescription="@string/image_no_internet_connection"
+            android:tv_airing_today_entity="@{mTvViewModel.readTvAiringToday}"
+            android:tv_airing_today_response="@{mTvViewModel.tvAiringToday}"
+            android:tv_popular_entity="@{mTvViewModel.readTvPopular}"
+            android:tv_popular_response="@{mTvViewModel.tvPopular}"
+            android:tv_top_rated_entity="@{mTvViewModel.readTvTopRated}"
+            android:tv_top_rated_response="@{mTvViewModel.tvTopRated}"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_no_internet" />
+
+        <TextView
+            android:id="@+id/tvNoInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivNoInternet"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:alpha="0.6"
+            android:text="@string/no_internet_connection"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:tv_airing_today_entity="@{mTvViewModel.readTvAiringToday}"
+            android:tv_airing_today_response="@{mTvViewModel.tvAiringToday}"
+            android:tv_popular_entity="@{mTvViewModel.readTvPopular}"
+            android:tv_popular_response="@{mTvViewModel.tvPopular}"
+            android:tv_top_rated_entity="@{mTvViewModel.readTvTopRated}"
+            android:tv_top_rated_response="@{mTvViewModel.tvTopRated}"
+            android:visibility="gone" />
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/sTvLayout"
             android:layout_width="match_parent"
@@ -37,35 +72,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivNoInternet"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:alpha="0.6"
-                    android:contentDescription="@string/image_no_internet_connection"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.50"
-                    app:srcCompat="@drawable/ic_no_internet" />
-
-                <TextView
-                    android:id="@+id/tvNoInternet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:alpha="0.6"
-                    android:text="@string/no_internet_connection"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@+id/ivNoInternet"
-                    app:layout_constraintStart_toStartOf="@+id/ivNoInternet"
-                    app:layout_constraintTop_toBottomOf="@+id/ivNoInternet" />
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/svTv"
@@ -122,7 +128,6 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvTvThree" />
-
 
                 <TextView
                     android:id="@+id/tvTvOne"

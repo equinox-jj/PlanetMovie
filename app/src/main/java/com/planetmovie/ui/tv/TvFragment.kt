@@ -113,7 +113,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
     }
 
     private fun readApiResponse() {
-        mTvViewModel.getTvAiringToday()
+        mTvViewModel.getTvsAiringToday()
         mTvViewModel.tvAiringToday.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -135,7 +135,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
             }
         }
 
-        mTvViewModel.getTvPopular()
+        mTvViewModel.getTvsPopular()
         mTvViewModel.tvPopular.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -157,7 +157,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
             }
         }
 
-        mTvViewModel.getTvTopRated()
+        mTvViewModel.getTvsTopRated()
         mTvViewModel.tvTopRated.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {

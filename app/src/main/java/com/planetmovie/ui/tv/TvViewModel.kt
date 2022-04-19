@@ -53,7 +53,7 @@ constructor(
     var tvTopRated: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
     var searchTv: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
 
-    fun getTvAiringToday() = viewModelScope.launch {
+    fun getTvsAiringToday() = viewModelScope.launch {
         tvAiringToday.value = Resource.Loading()
         if (hasConnectivity()) {
             try {
@@ -73,7 +73,7 @@ constructor(
         }
     }
 
-    fun getTvPopular() = viewModelScope.launch {
+    fun getTvsPopular() = viewModelScope.launch {
         tvPopular.value = Resource.Loading()
         if (hasConnectivity()) {
             try {
@@ -88,10 +88,12 @@ constructor(
             } catch (e: Exception) {
                 tvPopular.value = Resource.Error("Tv Not Found.")
             }
+        } else {
+            tvPopular.value = Resource.Error("No Internet Connection.")
         }
     }
 
-    fun getTvTopRated() = viewModelScope.launch {
+    fun getTvsTopRated() = viewModelScope.launch {
         tvTopRated.value = Resource.Loading()
         if (hasConnectivity()) {
             try {
@@ -106,6 +108,8 @@ constructor(
             } catch (e: Exception) {
                 tvTopRated.value = Resource.Error("Tv Not Found.")
             }
+        } else {
+            tvTopRated.value = Resource.Error("No Internet Connection.")
         }
     }
 
