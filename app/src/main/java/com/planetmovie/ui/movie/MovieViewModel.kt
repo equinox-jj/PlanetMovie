@@ -87,6 +87,9 @@ constructor(
                 moviePopular.value = Resource.Error("Movies Popular Not Found.")
             }
         }
+        else {
+            moviePopular.value = Resource.Error("No Internet Connection.")
+        }
     }
 
     fun getMoviesUpcoming() = viewModelScope.launch {
@@ -103,6 +106,9 @@ constructor(
             } catch (e: Exception) {
                 movieUpcoming.value = Resource.Error("Movies Upcoming Not Found.")
             }
+        }
+        else {
+            movieUpcoming.value = Resource.Error("No Internet Connection.")
         }
     }
 
