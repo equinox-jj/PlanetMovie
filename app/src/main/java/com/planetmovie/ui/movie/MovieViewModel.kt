@@ -88,7 +88,7 @@ constructor(
             }
         }
         else {
-            moviePopular.value = Resource.Error("No Internet Connection")
+            moviePopular.value = Resource.Error("No Internet Connection.")
         }
     }
 
