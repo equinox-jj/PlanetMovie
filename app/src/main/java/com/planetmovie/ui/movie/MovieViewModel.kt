@@ -108,7 +108,7 @@ constructor(
             }
         }
         else {
-            movieUpcoming.value = Resource.Error("No Internet Connection")
+            movieUpcoming.value = Resource.Error("No Internet Connection.")
         }
     }
 
@@ -122,7 +122,7 @@ constructor(
                 searchMovie.value = Resource.Error("Movies Not Found.")
             }
         } else {
-            searchMovie.value = Resource.Error("No Internet Connection")
+            searchMovie.value = Resource.Error("No Internet Connection.")
         }
     }
 
