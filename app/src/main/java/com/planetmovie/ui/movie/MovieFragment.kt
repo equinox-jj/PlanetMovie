@@ -215,9 +215,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
 
     private fun hideText() {
         binding.apply {
-            binding.tvMovieOne.visibility = View.GONE
-            binding.tvMovieTwo.visibility = View.GONE
-            binding.tvMovieThree.visibility = View.GONE
+            tvMovieOne.visibility = View.GONE
+            tvMovieTwo.visibility = View.GONE
+            tvMovieThree.visibility = View.GONE
         }
     }
 

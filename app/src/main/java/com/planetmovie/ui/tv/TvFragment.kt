@@ -2,7 +2,6 @@ package com.planetmovie.ui.tv
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -75,11 +74,10 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
         }
         lifecycleScope.launch {
             networkListener = NetworkListener()
-            networkListener.checkNetworkAvailability(requireContext())
-                .collect { status ->
-                    mSharedViewModel.networkStatus = status
-                    readDatabase()
-                }
+            networkListener.checkNetworkAvailability(requireContext()).collect { status ->
+                mSharedViewModel.networkStatus = status
+                readDatabase()
+            }
         }
     }
 
@@ -122,12 +120,8 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
+                    hideText()
                     loadDataFromCache()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -144,12 +138,8 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
+                    hideText()
                     loadDataFromCache()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -166,12 +156,8 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
+                    hideText()
                     loadDataFromCache()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -223,6 +209,14 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 rvPopularTv.visibility = View.VISIBLE
                 rvTopRatedTv.visibility = View.VISIBLE
             }
+        }
+    }
+
+    private fun hideText() {
+        binding.apply {
+            tvTvOne.visibility = View.GONE
+            tvTvTwo.visibility = View.GONE
+            tvTvThree.visibility = View.GONE
         }
     }
 
