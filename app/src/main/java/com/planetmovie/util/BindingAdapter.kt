@@ -304,5 +304,45 @@ class BindingAdapter {
             }
         }
 
+        @BindingAdapter(
+            "android:tv_airing_today_response",
+            "android:tv_top_rated_response",
+            "android:tv_popular_response",
+            "android:tv_airing_today_entity",
+            "android:tv_top_rated_entity",
+            "android:tv_popular_entity",
+            requireAll = true
+        )
+        @JvmStatic
+        fun tvNoInternetConnection(
+            view: View,
+            tvAiringTodayResponse: Resource<MovieResponse>?,
+            tvTopRatedResponse: Resource<MovieResponse>?,
+            tvPopularResponse: Resource<MovieResponse>?,
+            tvAiringTodayEntity: List<TvAiringTodayEntity>?,
+            tvTopRatedEntity: List<TvTopRatedEntity>?,
+            tvPopularEntity: List<TvPopularEntity>?
+        ) {
+            when (view) {
+                is ImageView -> {
+                    view.isVisible = tvAiringTodayResponse is Resource.Error
+                            && tvAiringTodayEntity.isNullOrEmpty()
+                            || tvTopRatedResponse is Resource.Error
+                            && tvTopRatedEntity.isNullOrEmpty()
+                            || tvPopularResponse is Resource.Error
+                            && tvPopularEntity.isNullOrEmpty()
+                }
+                is TextView -> {
+                    view.isVisible = tvAiringTodayResponse is Resource.Error
+                            && tvAiringTodayEntity.isNullOrEmpty()
+                            || tvTopRatedResponse is Resource.Error
+                            && tvTopRatedEntity.isNullOrEmpty()
+                            || tvPopularResponse is Resource.Error
+                            && tvPopularEntity.isNullOrEmpty()
+                    view.text = tvAiringTodayResponse?.message.toString()
+                }
+            }
+        }
+
     }
 }

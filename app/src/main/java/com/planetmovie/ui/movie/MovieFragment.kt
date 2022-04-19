@@ -121,10 +121,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
+                    hideText()
                     loadDataFromCache()
-                    binding.tvMovieOne.visibility = View.GONE
-                    binding.tvMovieTwo.visibility = View.GONE
-                    binding.tvMovieThree.visibility = View.GONE
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -141,10 +139,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
+                    hideText()
                     loadDataFromCache()
-                    binding.tvMovieOne.visibility = View.GONE
-                    binding.tvMovieTwo.visibility = View.GONE
-                    binding.tvMovieThree.visibility = View.GONE
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -161,10 +157,8 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
+                    hideText()
                     loadDataFromCache()
-                    binding.tvMovieOne.visibility = View.GONE
-                    binding.tvMovieTwo.visibility = View.GONE
-                    binding.tvMovieThree.visibility = View.GONE
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -216,6 +210,14 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 rvUpcomingMovie.visibility = View.VISIBLE
                 rvNowPlaying.visibility = View.VISIBLE
             }
+        }
+    }
+
+    private fun hideText() {
+        binding.apply {
+            binding.tvMovieOne.visibility = View.GONE
+            binding.tvMovieTwo.visibility = View.GONE
+            binding.tvMovieThree.visibility = View.GONE
         }
     }
 
