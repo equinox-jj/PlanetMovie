@@ -2,7 +2,6 @@ package com.planetmovie.ui.movie
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -75,8 +74,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         }
         lifecycleScope.launch {
             networkListener = NetworkListener()
-            networkListener.checkNetworkAvailability(requireContext())
-                .collect { status ->
+            networkListener.checkNetworkAvailability(requireContext()).collect { status ->
                     mSharedViewModel.networkStatus = status
                     mSharedViewModel.showNetworkStatus()
                     readDatabase()
@@ -124,11 +122,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 is Resource.Error -> {
                     showShimmer(false)
                     loadDataFromCache()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.tvMovieOne.visibility = View.GONE
+                    binding.tvMovieTwo.visibility = View.GONE
+                    binding.tvMovieThree.visibility = View.GONE
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -146,11 +142,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 is Resource.Error -> {
                     showShimmer(false)
                     loadDataFromCache()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.tvMovieOne.visibility = View.GONE
+                    binding.tvMovieTwo.visibility = View.GONE
+                    binding.tvMovieThree.visibility = View.GONE
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
@@ -168,11 +162,9 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 is Resource.Error -> {
                     showShimmer(false)
                     loadDataFromCache()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.tvMovieOne.visibility = View.GONE
+                    binding.tvMovieTwo.visibility = View.GONE
+                    binding.tvMovieThree.visibility = View.GONE
                 }
                 is Resource.Loading -> {
                     showShimmer(true)
