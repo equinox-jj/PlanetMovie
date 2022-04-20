@@ -14,4 +14,16 @@
     <color name="red">#FF0000</color>
     <color name="pink">#DF4C4C</color>
 
+    <!-- LIGHT THEME COLOR -->
+    <color name="color_card_background">#DF4C4C</color>
+    <color name="color_text">#DF4C4C</color>
+    <color name="color_background">#DF4C4C</color>
+    <color name="color_bottom_navigation">#DF4C4C</color>
+    <color name="color_card_stroke">#DF4C4C</color>
+    <color name="color_card_unstroke">#DF4C4C</color>
+    <color name="color_card_selected">#DF4C4C</color>
+    <color name="color_card_unselected">#DF4C4C</color>
+    <color name="color_appbar">#DF4C4C</color>
+    <color name="color_image">#DF4C4C</color>
+
 </resources>
