@@ -111,30 +111,30 @@ class ItemFavoriteTvAdapter(
 
     override fun onDestroyActionMode(actionMode: ActionMode?) {
         viewHolder.forEach { holder ->
-            cardViewFavTvStyle(holder, R.color.white, R.color.black)
+            cardViewFavTvStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
         }
         multiSelection = false
         selectedTv.clear()
-        applyStatusBarColor(R.color.teal_200)
+        applyStatusBarColor(R.color.color_appbar)
     }
 
     /** Contextual Action Mode */
     private fun saveItemOnScroll(currentTv: TvFavoriteEntity, holder: ItemFavTvViewHolder) {
         if (selectedTv.contains(currentTv)) {
-            cardViewFavTvStyle(holder, R.color.red, R.color.pink)
+            cardViewFavTvStyle(holder, R.color.color_card_selected, R.color.color_card_stroke)
         } else {
-            cardViewFavTvStyle(holder, R.color.white, R.color.black)
+            cardViewFavTvStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
         }
     }
 
     private fun applySelection(holder: ItemFavTvViewHolder, currentTv: TvFavoriteEntity) {
         if (selectedTv.contains(currentTv)) {
             selectedTv.remove(currentTv)
-            cardViewFavTvStyle(holder, R.color.white, R.color.black)
+            cardViewFavTvStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
             applyActionModeTitle()
         } else {
             selectedTv.add(currentTv)
-            cardViewFavTvStyle(holder, R.color.red, R.color.pink)
+            cardViewFavTvStyle(holder, R.color.color_card_selected, R.color.color_card_stroke)
             applyActionModeTitle()
         }
     }

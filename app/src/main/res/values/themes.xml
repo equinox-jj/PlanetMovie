@@ -49,6 +49,10 @@
         <item name="tabSelectedTextColor">@color/black</item>
     </style>
 
+    <style name="SearchTheme" parent="Widget.AppCompat.SearchView">
+        <item name="background">@color/color_card_background</item>
+    </style>
+
 <!--    <style name="PlanetMovie.SearchView" parent="ThemeOverlay.AppCompat">-->
 <!--        <item name="android:background">@color/white</item>-->
 <!--    </style>-->

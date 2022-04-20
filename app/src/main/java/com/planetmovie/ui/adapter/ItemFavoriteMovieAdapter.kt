@@ -111,30 +111,30 @@ class ItemFavoriteMovieAdapter(
 
     override fun onDestroyActionMode(actionMode: ActionMode?) {
         viewHolder.forEach { holder ->
-            changeMovieStyle(holder, R.color.white, R.color.black)
+            changeMovieStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
         }
         multiSelection = false
         selectedMovies.clear()
-        applyStatusBarColor(R.color.teal_200)
+        applyStatusBarColor(R.color.color_appbar)
     }
 
     /** Contextual Action Mode */
     private fun saveItemOnScroll(currentMovies: MovieFavoriteEntity, holder: ItemFavoriteMovieAdapter.ItemFavMovieViewHolder) {
         if (selectedMovies.contains(currentMovies)) {
-            changeMovieStyle(holder, R.color.red, R.color.pink)
+            changeMovieStyle(holder, R.color.color_card_selected, R.color.color_card_stroke)
         } else {
-            changeMovieStyle(holder, R.color.white, R.color.black)
+            changeMovieStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
         }
     }
 
     private fun applySelection(holder: ItemFavoriteMovieAdapter.ItemFavMovieViewHolder, currentMovies: MovieFavoriteEntity) {
         if (selectedMovies.contains(currentMovies)) {
             selectedMovies.remove(currentMovies)
-            changeMovieStyle(holder, R.color.white, R.color.black)
+            changeMovieStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
             applyActionModeTitle()
         } else {
             selectedMovies.add(currentMovies)
-            changeMovieStyle(holder, R.color.red, R.color.pink)
+            changeMovieStyle(holder, R.color.color_card_selected, R.color.color_card_stroke)
             applyActionModeTitle()
         }
     }

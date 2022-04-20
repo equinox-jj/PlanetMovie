@@ -17,7 +17,7 @@
         android:layout_margin="8dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="5dp"
-        app:strokeColor="@color/black"
+        app:strokeColor="@color/color_card_background"
         app:strokeWidth="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
                 android:gravity="start"
                 android:maxLines="1"
                 android:text="@{favoriteTvEntity.tvName}"
-                android:textColor="@color/black"
+                android:textColor="@color/color_text"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@{favoriteTvEntity.tvFirstAirDate}"
-                android:textColor="@color/black"
+                android:textColor="@color/color_text"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@+id/tvFavoriteTvTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tvFavoriteTvTitle" />
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/overview"
-                android:textColor="@color/black"
+                android:textColor="@color/color_text"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@+id/tvFavoriteTvDate"
                 app:layout_constraintTop_toBottomOf="@+id/tvFavoriteTvDate" />
@@ -87,7 +87,7 @@
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:text="@{favoriteTvEntity.overview}"
-                android:textColor="@color/black"
+                android:textColor="@color/color_text"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

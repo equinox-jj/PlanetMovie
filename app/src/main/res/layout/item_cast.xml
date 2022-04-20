@@ -44,7 +44,7 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="@{movieCast.name}"
-                android:textColor="@color/black"
+                android:textColor="@color/color_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="LoremIpsum" />
@@ -63,7 +63,7 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="@{movieCast.character}"
-                android:textColor="@color/gray"
+                android:textColor="@color/color_text"
                 android:textSize="15sp"
                 tools:text="LoremIpsum" />
 

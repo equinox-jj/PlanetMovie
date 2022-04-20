@@ -19,7 +19,6 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerInParent="true"
-            android:alpha="0.6"
             android:contentDescription="@string/image_no_internet_connection"
             android:movie_now_playing_entity="@{mMovieViewModel.readMoviesNowPlaying}"
             android:movie_now_playing_response="@{mMovieViewModel.movieNowPlaying}"
@@ -28,7 +27,8 @@
             android:movie_upcoming_entity="@{mMovieViewModel.readMoviesUpcoming}"
             android:movie_upcoming_response="@{mMovieViewModel.movieUpcoming}"
             android:visibility="gone"
-            app:srcCompat="@drawable/ic_no_internet" />
+            app:srcCompat="@drawable/ic_no_internet"
+            app:tint="@color/color_image" />
 
         <TextView
             android:id="@+id/tvNoInternet"
@@ -37,7 +37,6 @@
             android:layout_below="@+id/ivNoInternet"
             android:layout_centerInParent="true"
             android:layout_marginTop="8dp"
-            android:alpha="0.6"
             android:movie_now_playing_entity="@{mMovieViewModel.readMoviesNowPlaying}"
             android:movie_now_playing_response="@{mMovieViewModel.movieNowPlaying}"
             android:movie_popular_entity="@{mMovieViewModel.readMoviesPopular}"
@@ -45,6 +44,7 @@
             android:movie_upcoming_entity="@{mMovieViewModel.readMoviesUpcoming}"
             android:movie_upcoming_response="@{mMovieViewModel.movieUpcoming}"
             android:text="@string/no_internet_connection"
+            android:textColor="@color/color_image"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -56,11 +56,13 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
+            android:backgroundTint="@color/color_fab"
             android:clickable="true"
             android:contentDescription="@string/fab_movie"
             android:focusable="true"
             android:navigateMovieToFavoriteMovie="@{true}"
-            app:srcCompat="@drawable/ic_favorite" />
+            app:srcCompat="@drawable/ic_favorite"
+            app:tint="@color/color_fab_tint" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/sHomeLayout"
@@ -75,6 +77,7 @@
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/svMovie"
+                    style="@style/SearchTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -108,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/movie_now_playing"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:visibility="gone"
@@ -136,7 +139,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/movie_popular"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:visibility="gone"
@@ -163,7 +166,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/movie_upcoming"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:visibility="gone"

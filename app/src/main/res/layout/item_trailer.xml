@@ -54,7 +54,7 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="@{movieTrailer.name}"
-                android:textColor="@color/white"
+                android:textColor="@color/color_text_card_list"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 tools:text="Lorem Ipsum" />

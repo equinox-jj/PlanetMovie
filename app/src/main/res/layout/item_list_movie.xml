@@ -57,7 +57,7 @@
                 android:gravity="center"
                 android:maxLines="2"
                 android:text="@{movieResult.title}"
-                android:textColor="@color/white"
+                android:textColor="@color/color_text_card_list"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -38,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/color_fab"
             android:clickable="true"
             android:contentDescription="@string/fab_movie_detail"
             android:focusable="true"
@@ -45,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/ivDtlMovieBackdrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivDtlMovieBackdrop"
-            app:tint="@color/white" />
+            app:tint="@color/color_fab_tint" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvPosterDetail"
@@ -76,7 +77,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/rating"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@id/cvPosterDetail"
             app:layout_constraintTop_toBottomOf="@+id/ivDtlMovieBackdrop" />
@@ -86,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@id/tvRating"
             app:layout_constraintTop_toTopOf="@+id/tvRating"
@@ -107,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/release_date"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/rbDtlOne"
             app:layout_constraintTop_toBottomOf="@+id/rbDtlOne" />
@@ -117,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/tvReleaseDate"
             app:layout_constraintTop_toTopOf="@+id/tvReleaseDate"
@@ -130,7 +131,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/overview"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/cvPosterDetail"
             app:layout_constraintTop_toBottomOf="@+id/cvPosterDetail" />
@@ -141,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvOverview"
@@ -154,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/cast"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tvDtlOverview"
@@ -177,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/trailer"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/rvDtlCast"
