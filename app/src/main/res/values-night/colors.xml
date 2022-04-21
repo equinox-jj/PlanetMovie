@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- LIGHT THEME COLOR -->
+    <color name="color_icon_unfavorite">#FFFFFF</color>
+    <color name="color_icon_favorite">#FF0000</color>
+    <color name="color_icon">#ffffff</color>
+    <color name="color_gradient">#212121</color>
     <color name="color_card_background">#272a28</color>
     <color name="color_text">#ffffff</color>
     <color name="color_text_card_list">#ffffff</color>
     <color name="color_background">#000000</color>
-    <color name="color_bottom_navigation">#038719</color>
+    <color name="color_bottom_navigation">#00f200</color>
     <color name="color_card_stroke">#0ae636</color>
     <color name="color_card_unstroke">#ffffff</color>
     <color name="color_card_selected">#27be39</color>
     <color name="color_card_unselected">#272a28</color>
-    <color name="color_appbar">#038719</color>
+    <color name="color_appbar">#00f200</color>
+    <color name="color_status_bar">#00be00</color>
     <color name="color_fab">#038719</color>
     <color name="color_fab_tint">#ffffff</color>
     <color name="color_image">#c5bfbf</color>
-    <color name="color_shimmer">#414144</color>
+    <color name="color_shimmer">#7B7B7B</color>
+    <color name="color_shimmer_two">#5A5353</color>
 </resources>

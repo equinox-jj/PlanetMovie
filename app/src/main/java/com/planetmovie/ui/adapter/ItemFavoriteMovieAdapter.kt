@@ -88,7 +88,7 @@ class ItemFavoriteMovieAdapter(
     override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
         actionMode?.menuInflater?.inflate(R.menu.menu_favorite_contextual, menu)
         mActionMode = actionMode!!
-        applyStatusBarColor(R.color.gray_black)
+        applyStatusBarColor(R.color.color_status_bar)
         return true
     }
 
@@ -115,11 +115,11 @@ class ItemFavoriteMovieAdapter(
         }
         multiSelection = false
         selectedMovies.clear()
-        applyStatusBarColor(R.color.color_appbar)
+        applyStatusBarColor(R.color.color_status_bar)
     }
 
     /** Contextual Action Mode */
-    private fun saveItemOnScroll(currentMovies: MovieFavoriteEntity, holder: ItemFavoriteMovieAdapter.ItemFavMovieViewHolder) {
+    private fun saveItemOnScroll(currentMovies: MovieFavoriteEntity, holder: ItemFavMovieViewHolder) {
         if (selectedMovies.contains(currentMovies)) {
             changeMovieStyle(holder, R.color.color_card_selected, R.color.color_card_stroke)
         } else {
@@ -127,7 +127,7 @@ class ItemFavoriteMovieAdapter(
         }
     }
 
-    private fun applySelection(holder: ItemFavoriteMovieAdapter.ItemFavMovieViewHolder, currentMovies: MovieFavoriteEntity) {
+    private fun applySelection(holder: ItemFavMovieViewHolder, currentMovies: MovieFavoriteEntity) {
         if (selectedMovies.contains(currentMovies)) {
             selectedMovies.remove(currentMovies)
             changeMovieStyle(holder, R.color.color_card_unselected, R.color.color_card_unstroke)
@@ -139,7 +139,7 @@ class ItemFavoriteMovieAdapter(
         }
     }
 
-    private fun changeMovieStyle(holder: ItemFavoriteMovieAdapter.ItemFavMovieViewHolder, backgroundColor: Int, strokeColor: Int) {
+    private fun changeMovieStyle(holder: ItemFavMovieViewHolder, backgroundColor: Int, strokeColor: Int) {
         holder.binding.constraintFavoriteMovie.setBackgroundColor(ContextCompat.getColor(requireActivity, backgroundColor))
         holder.binding.cvFavoriteMovie.strokeColor = ContextCompat.getColor(requireActivity, strokeColor)
     }

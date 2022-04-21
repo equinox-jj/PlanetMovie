@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="fitXY"
-        android:src="@color/gray"
+        android:src="@color/color_shimmer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +21,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        android:src="@color/gray_black"
+        android:src="@color/color_shimmer_two"
         app:layout_constraintBottom_toBottomOf="@+id/shRvOne"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shRvOne"
@@ -34,7 +34,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        android:src="@color/gray_black"
+        android:src="@color/color_shimmer"
         app:layout_constraintStart_toEndOf="@+id/shRvTwo"
         app:layout_constraintTop_toBottomOf="@+id/shRvOne"
         app:riv_corner_radius="16dp" />
@@ -45,7 +45,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        android:src="@color/gray_black"
+        android:src="@color/color_shimmer"
         app:layout_constraintStart_toStartOf="@+id/shTxtOne"
         app:layout_constraintTop_toBottomOf="@+id/shTxtOne"
         app:riv_corner_radius="16dp" />
@@ -56,7 +56,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        android:src="@color/gray_black"
+        android:src="@color/color_shimmer"
         app:layout_constraintStart_toStartOf="@+id/shTxtTwo"
         app:layout_constraintTop_toBottomOf="@+id/shTxtTwo"
         app:riv_corner_radius="16dp" />

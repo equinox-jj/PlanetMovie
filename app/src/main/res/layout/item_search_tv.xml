@@ -16,12 +16,14 @@
         android:layout_height="170dp"
         android:layout_margin="8dp"
         android:navigateSearchTvToDetail="@{searchTvResult.id}"
+        app:cardBackgroundColor="@color/color_card_unselected"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/color_card_unstroke">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

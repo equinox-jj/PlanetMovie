@@ -6,27 +6,26 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray">#574D4D</color>
-    <color name="gray_black">#493E3E</color>
-    <color name="red">#FF0000</color>
-    <color name="pink">#DF4C4C</color>
-
     <!-- LIGHT THEME COLOR -->
-    <color name="color_card_background">#b3a2a2</color>
+    <color name="color_icon_unfavorite">#FFFFFF</color>
+    <color name="color_icon_favorite">#FF0000</color>
+    <color name="color_icon">#000000</color>
+    <color name="color_gradient">#484848</color>
+    <color name="color_card_background">#DFD3D3</color>
     <color name="color_text">#111127</color>
     <color name="color_text_card_list">#ffffff</color>
     <color name="color_background">#ffffff</color>
-    <color name="color_bottom_navigation">#1b144d</color>
+    <color name="color_bottom_navigation">#263238</color>
     <color name="color_card_stroke">#2309e1</color>
     <color name="color_card_unstroke">#272626</color>
     <color name="color_card_selected">#402dcd</color>
-    <color name="color_card_unselected">#b3a2a2</color>
-    <color name="color_appbar">#1b144d</color>
+    <color name="color_card_unselected">#DFD3D3</color>
+    <color name="color_appbar">#263238</color>
+    <color name="color_status_bar">#000a12</color>
     <color name="color_fab">#1b144d</color>
     <color name="color_fab_tint">#ffffff</color>
     <color name="color_image">#414144</color>
-    <color name="color_shimmer">#414144</color>
+    <color name="color_shimmer">#26262A</color>
+    <color name="color_shimmer_two">#2C2828</color>
 
 </resources>

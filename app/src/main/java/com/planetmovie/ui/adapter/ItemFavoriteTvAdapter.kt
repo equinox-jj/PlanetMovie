@@ -88,7 +88,7 @@ class ItemFavoriteTvAdapter(
     override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
         actionMode?.menuInflater?.inflate(R.menu.menu_favorite_contextual, menu)
         mActionMode = actionMode!!
-        applyStatusBarColor(R.color.gray_black)
+        applyStatusBarColor(R.color.color_status_bar)
         return true
     }
 
@@ -115,7 +115,7 @@ class ItemFavoriteTvAdapter(
         }
         multiSelection = false
         selectedTv.clear()
-        applyStatusBarColor(R.color.color_appbar)
+        applyStatusBarColor(R.color.color_status_bar)
     }
 
     /** Contextual Action Mode */

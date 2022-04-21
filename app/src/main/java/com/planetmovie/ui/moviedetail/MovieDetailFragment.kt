@@ -113,12 +113,12 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                     movieSaved = if (!movieSaved) {
                         mMovieDetailViewModel.insertFavoriteMovie(detailResponse)
                         showSnackBarFavorite("Movie Saved.")
-                        changeFabColor(R.color.red)
+                        changeFabColor(R.color.color_icon_favorite)
                         true
                     } else {
                         mMovieDetailViewModel.deleteFavoriteMovie(detailResponse.id)
                         showSnackBarFavorite("Movie Removed.")
-                        changeFabColor(R.color.white)
+                        changeFabColor(R.color.color_icon_unfavorite)
                         false
                     }
                 }
@@ -132,7 +132,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             try {
                 for (savedMovie in favoriteMoviesEntity) {
                     if (savedMovie.id == args.movieId) {
-                        changeFabColor(R.color.red)
+                        changeFabColor(R.color.color_icon_favorite)
                         savedMovieId = savedMovie.id
                         movieSaved = true
                     }

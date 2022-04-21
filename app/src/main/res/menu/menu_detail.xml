@@ -6,7 +6,7 @@
     <item
         android:id="@+id/favorite_movie_menu"
         android:icon="@drawable/ic_favorite"
-        android:iconTint="@color/white"
+        android:iconTint="@color/color_icon"
         android:title="@string/favorite"
         app:showAsAction="ifRoom"
         tools:targetApi="o" />

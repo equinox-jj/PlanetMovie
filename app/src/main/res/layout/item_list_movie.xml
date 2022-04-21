@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="movieResult"
             type="com.planetmovie.data.remote.model.MovieResult" />
@@ -17,8 +18,10 @@
         android:layout_margin="8dp"
         android:foreground="?selectableItemBackground"
         android:navigateMovieToDetail="@{movieResult.id}"
+        app:cardBackgroundColor="@color/color_card_unselected"
         app:cardCornerRadius="15dp"
-        app:cardElevation="5dp">
+        app:cardElevation="5dp"
+        app:strokeColor="@color/color_card_unstroke">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

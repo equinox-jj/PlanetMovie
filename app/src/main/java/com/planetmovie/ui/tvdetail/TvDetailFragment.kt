@@ -115,12 +115,12 @@ class TvDetailFragment : Fragment(R.layout.fragment_tv_detail) {
                     tvSaved = if (!tvSaved) {
                         mTvDetailViewModel.insertFavoriteTv(detailResponse)
                         showSnackBarFavorite("Movie Saved.")
-                        changeFabColor(R.color.red)
+                        changeFabColor(R.color.color_icon_favorite)
                         true
                     } else {
                         mTvDetailViewModel.deleteFavoriteTv(detailResponse.id)
                         showSnackBarFavorite("Movie Removed.")
-                        changeFabColor(R.color.white)
+                        changeFabColor(R.color.color_icon_unfavorite)
                         false
                     }
                 }
@@ -134,7 +134,7 @@ class TvDetailFragment : Fragment(R.layout.fragment_tv_detail) {
             try {
                 for (savedMovie in favoriteMoviesEntity) {
                     if (savedMovie.id == args.tvId) {
-                        changeFabColor(R.color.red)
+                        changeFabColor(R.color.color_icon_favorite)
                         savedTvId = savedMovie.id
                         tvSaved = true
                     }
