@@ -29,12 +29,4 @@ constructor(
     fun deleteFavoriteTv(tvId: Int) = viewModelScope.launch(Dispatchers.IO) {
         repository.localData.deleteFavoriteTv(tvId)
     }
-
-    fun deleteAllFavoriteMovie() = viewModelScope.launch(Dispatchers.IO) {
-        repository.localData.deleteAllFavoriteMovie()
-    }
-
-    fun deleteAllFavoriteTv() = viewModelScope.launch(Dispatchers.IO) {
-        repository.localData.deleteAllFavoriteTv()
-    }
 }

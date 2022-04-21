@@ -41,5 +41,8 @@
     <string name="fab_favorite_tv">Fab Favorite Tv</string>
     <string name="fab_movie_detail">Fab Movie Detail</string>
     <string name="fab_movie">Fab Movie</string>
+    <string name="no_favorite_image">No Favorite Image</string>
+    <string name="no_favorite_movie">No Favorite Movie.</string>
+    <string name="no_favorite_tv">No Favorite Tv.</string>
 
 </resources>

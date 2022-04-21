@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -16,6 +17,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.favorite_tv.FavoriteTvFragment">
+
+        <ImageView
+            android:id="@+id/ivNoFavoriteTv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/no_favorite_image"
+            android:no_favorite_tv_data="@{favTvViewModel.getFavoriteTv}"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45"
+            app:srcCompat="@drawable/ic_mood_bad"
+            app:tint="@color/color_image" />
+
+        <TextView
+            android:id="@+id/tvNoFavoriteTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:no_favorite_tv_data="@{favTvViewModel.getFavoriteTv}"
+            android:text="@string/no_favorite_tv"
+            android:textColor="@color/color_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/ivNoFavoriteTv"
+            app:layout_constraintStart_toStartOf="@+id/ivNoFavoriteTv"
+            app:layout_constraintTop_toBottomOf="@+id/ivNoFavoriteTv" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavoriteTv"
