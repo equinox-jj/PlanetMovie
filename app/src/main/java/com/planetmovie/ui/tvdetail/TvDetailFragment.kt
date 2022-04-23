@@ -45,12 +45,12 @@ class TvDetailFragment : Fragment(R.layout.fragment_tv_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTvDetailBinding.bind(view)
-        setupRecycler()
+        initRecyclerView()
         observeViewModel()
         checkSavedFavoriteTv()
     }
 
-    private fun setupRecycler() {
+    private fun initRecyclerView() {
         binding.rvDtlCast.apply {
             adapter = mTvDetailCastAdapter
             setHasFixedSize(true)
@@ -73,7 +73,7 @@ class TvDetailFragment : Fragment(R.layout.fragment_tv_detail) {
             when (detailTv) {
                 is Resource.Success -> {
                     showShimmer(false)
-                    detailTv.data?.let { detailData(it) }
+                    detailTv.data?.let { tvDetailResponse(it) }
                 }
                 is Resource.Error -> {
                     showShimmer(false)
@@ -85,7 +85,7 @@ class TvDetailFragment : Fragment(R.layout.fragment_tv_detail) {
         }
     }
 
-    private fun detailData(data: MovieDetailResponse) {
+    private fun tvDetailResponse(data: MovieDetailResponse) {
         data.let { detailResponse ->
             binding.apply {
                 val rating = "${detailResponse.voteAverage} / 10"

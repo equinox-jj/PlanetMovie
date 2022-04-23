@@ -44,11 +44,11 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.mMovieViewModel = mMovieViewModel
 
-        setupRecycler()
+        initRecyclerView()
         readBackOnline()
     }
 
-    private fun setupRecycler() {
+    private fun initRecyclerView() {
         binding.rvNowPlaying.apply {
             mNowPlayingAdapter = ItemMovieListAdapter()
             adapter = mNowPlayingAdapter

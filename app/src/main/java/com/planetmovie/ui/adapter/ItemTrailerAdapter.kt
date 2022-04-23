@@ -13,25 +13,22 @@ class ItemTrailerAdapter : RecyclerView.Adapter<ItemTrailerAdapter.MyViewHolder>
 
     private var movieTrailer = emptyList<MovieVideosResult>()
 
-    class MyViewHolder(var binding: ItemTrailerBinding) : RecyclerView.ViewHolder(binding.root) {
-        companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemTrailerBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
-            }
+    class MyViewHolder(private val binding: ItemTrailerBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(movieTrailer: MovieVideosResult) {
+            binding.movieTrailer = movieTrailer
+            binding.executePendingBindings()
+            binding.tvTrailer.isSelected = true
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+        val binding = ItemTrailerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val trailerDetail = movieTrailer[position]
-        holder.binding.movieTrailer = trailerDetail
-        holder.binding.executePendingBindings()
-        holder.binding.tvTrailer.isSelected = true
+        holder.bind(trailerDetail)
     }
 
     override fun getItemCount(): Int = movieTrailer.size

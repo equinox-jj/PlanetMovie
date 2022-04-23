@@ -30,10 +30,10 @@ class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.favTvViewModel = mFavoriteTvViewModel
         binding.mFavTvAdapter = mFavoriteTvAdapter
-        setupRecyclerView(binding.rvFavoriteTv)
+        initRecyclerView(binding.rvFavoriteTv)
     }
 
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
+    private fun initRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter = mFavoriteTvAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }

@@ -13,25 +13,22 @@ class ItemSearchMovieAdapter : RecyclerView.Adapter<ItemSearchMovieAdapter.MyVie
 
     private var searchMovieResult = emptyList<MovieResult>()
 
-    class MyViewHolder(var binding: ItemSearchMovieBinding) :
+    class MyViewHolder(private val binding: ItemSearchMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemSearchMovieBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
+            fun bind(searchMovieResult: MovieResult) {
+                binding.searchMovieResult = searchMovieResult
+                binding.executePendingBindings()
             }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+        val binding = ItemSearchMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentSearchMovie = searchMovieResult[position]
-        holder.binding.searchMovieResult = currentSearchMovie
-        holder.binding.executePendingBindings()
+        holder.bind(currentSearchMovie)
     }
 
     override fun getItemCount(): Int = searchMovieResult.size

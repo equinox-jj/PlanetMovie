@@ -29,10 +29,10 @@ class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.favMovieViewModel = mFavoriteMovieViewModel
         binding.mFavMovieAdapter = mFavoriteMovieAdapter
-        setupRecyclerView(binding.rvFavoriteMovie)
+        initRecyclerView(binding.rvFavoriteMovie)
     }
 
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
+    private fun initRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter = mFavoriteMovieAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }

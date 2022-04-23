@@ -44,11 +44,11 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.mTvViewModel = mTvViewModel
 
-        setupRecycler()
+        initRecyclerView()
         readBackOnline()
     }
 
-    private fun setupRecycler() {
+    private fun initRecyclerView() {
         binding.rvAiringNow.apply {
             mAiringTodayAdapter = ItemTvListAdapter()
             adapter = mAiringTodayAdapter

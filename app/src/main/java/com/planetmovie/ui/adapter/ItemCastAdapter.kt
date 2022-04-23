@@ -13,26 +13,23 @@ class ItemCastAdapter : RecyclerView.Adapter<ItemCastAdapter.MyViewHolder>() {
 
     private var movieCast = emptyList<MovieCast>()
 
-    class MyViewHolder(var binding: ItemCastBinding) : RecyclerView.ViewHolder(binding.root) {
-        companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemCastBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
-            }
+    class MyViewHolder(private val binding: ItemCastBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(movieCast: MovieCast) {
+            binding.movieCast = movieCast
+            binding.executePendingBindings()
+            binding.tvCast.isSelected = true
+            binding.tvCastCharName.isSelected = true
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+        val binding = ItemCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val castDetail = movieCast[position]
-        holder.binding.tvCast.isSelected = true
-        holder.binding.tvCastCharName.isSelected = true
-        holder.binding.movieCast = castDetail
-        holder.binding.executePendingBindings()
+        holder.bind(castDetail)
     }
 
     override fun getItemCount(): Int = movieCast.size

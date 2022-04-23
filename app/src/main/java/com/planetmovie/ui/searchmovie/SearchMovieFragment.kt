@@ -36,16 +36,12 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSearchMovieBinding.bind(view)
 
-        mSharedViewModel.readBackOnline.observe(viewLifecycleOwner) {
-            mSharedViewModel.backOnline = it
-        }
-
-        setupRecycler()
+        initRecyclerView()
         searchMovie()
 
     }
 
-    private fun setupRecycler() {
+    private fun initRecyclerView() {
         binding.rvSearchMovie.apply {
             adapter = mSearchMovieAdapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -57,7 +53,7 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
         binding.svSearchMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    searchApiData(query)
+                    searchMovieViewModel(query)
                     binding.svSearchMovie.clearFocus()
                 }
                 return true
@@ -68,18 +64,18 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
         })
     }
 
-    private fun searchApiData(query: String) {
+    private fun searchMovieViewModel(query: String) {
         val searchQuery = "%$query%"
         mSearchViewModel.getSearchMovie(mSharedViewModel.searchQueries(searchQuery))
         mSearchViewModel.searchMovie.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
-                    showSearchShimmer(false)
+                    showShimmer(false)
                     val movieData = response.data
                     movieData?.let { mSearchMovieAdapter.searchDiffUtil(it) }
                 }
                 is Resource.Error -> {
-                    showSearchShimmer(false)
+                    showShimmer(false)
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -87,13 +83,13 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
                     ).show()
                 }
                 is Resource.Loading -> {
-                    showSearchShimmer(true)
+                    showShimmer(true)
                 }
             }
         }
     }
 
-    private fun showSearchShimmer(boolean: Boolean) {
+    private fun showShimmer(boolean: Boolean) {
         binding.apply {
             if (boolean) {
                 isShimmerLoading = true

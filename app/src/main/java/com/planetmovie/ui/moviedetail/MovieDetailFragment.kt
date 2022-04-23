@@ -45,12 +45,12 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMovieDetailBinding.bind(view)
-        setupRecycler()
+        initRecyclerView()
         observeViewModel()
         checkSavedFavoriteMovies()
     }
 
-    private fun setupRecycler() {
+    private fun initRecyclerView() {
         binding.rvDtlCast.apply {
             adapter = mMovieDetailCastAdapter
             setHasFixedSize(true)
@@ -71,7 +71,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             when (detailMovie) {
                 is Resource.Success -> {
                     showShimmer(false)
-                    detailMovie.data?.let { detailData(it) }
+                    detailMovie.data?.let { movieDetailResponse(it) }
                 }
                 is Resource.Error -> {
                     showShimmer(false)
@@ -83,7 +83,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         }
     }
 
-    private fun detailData(data: MovieDetailResponse) {
+    private fun movieDetailResponse(data: MovieDetailResponse) {
         data.let { detailResponse ->
             binding.apply {
                 val rating = "${detailResponse.voteAverage} / 10"
