@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.planetmovie.R
 import com.planetmovie.databinding.FragmentFavoriteMovieBinding
 import com.planetmovie.ui.adapter.ItemFavoriteMovieAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
 
     // View Binding

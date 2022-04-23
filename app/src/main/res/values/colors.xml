@@ -12,6 +12,7 @@
     <color name="color_icon">#000000</color>
     <color name="color_gradient">#484848</color>
     <color name="color_card_background">#DFD3D3</color>
+    <color name="color_card_shadow">#272a28</color>
     <color name="color_text">#111127</color>
     <color name="color_text_card_list">#ffffff</color>
     <color name="color_background">#ffffff</color>

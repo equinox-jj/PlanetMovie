@@ -10,7 +10,9 @@ import com.planetmovie.R
 import com.planetmovie.databinding.FragmentFavoriteTvBinding
 import com.planetmovie.ui.adapter.ItemFavoriteTvAdapter
 import com.planetmovie.ui.favorite_movie.FavoriteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
 
     // View Binding

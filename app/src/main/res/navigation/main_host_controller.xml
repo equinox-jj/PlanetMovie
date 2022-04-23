@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/action_movieFragment_to_searchFragment"
-            app:destination="@id/searchMovieFragment" />
+            app:destination="@id/searchMovieFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_movieFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_movieFragment_to_favoriteMovieFragment"
             app:destination="@id/favoriteMovieFragment"
@@ -32,13 +40,25 @@
         tools:layout="@layout/fragment_tv">
         <action
             android:id="@+id/action_tvFragment_to_searchTvFragment"
-            app:destination="@id/searchTvFragment" />
+            app:destination="@id/searchTvFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_tvFragment_to_tvDetailFragment"
-            app:destination="@id/tvDetailFragment" />
+            app:destination="@id/tvDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_tvFragment_to_favoriteTvFragment"
-            app:destination="@id/favoriteTvFragment" />
+            app:destination="@id/favoriteTvFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
 
@@ -46,20 +66,28 @@
         android:id="@+id/favoriteMovieFragment"
         android:name="com.planetmovie.ui.favorite_movie.FavoriteMovieFragment"
         android:label="Favorite Movie"
-        tools:layout="@layout/fragment_favorite_movie" >
+        tools:layout="@layout/fragment_favorite_movie">
         <action
             android:id="@+id/action_favoriteMovieFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
     <fragment
         android:id="@+id/favoriteTvFragment"
         android:name="com.planetmovie.ui.favorite_tv.FavoriteTvFragment"
         android:label="Favorite Tv"
-        tools:layout="@layout/fragment_favorite_tv" >
+        tools:layout="@layout/fragment_favorite_tv">
         <action
             android:id="@+id/action_favoriteTvFragment_to_tvDetailFragment"
-            app:destination="@id/tvDetailFragment" />
+            app:destination="@id/tvDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
 
@@ -77,7 +105,11 @@
         tools:layout="@layout/fragment_search_movie">
         <action
             android:id="@+id/action_searchMovieFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
 
@@ -88,7 +120,11 @@
         tools:layout="@layout/fragment_search_tv">
         <action
             android:id="@+id/action_searchTvFragment_to_tvDetailFragment"
-            app:destination="@id/tvDetailFragment" />
+            app:destination="@id/tvDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 
 
