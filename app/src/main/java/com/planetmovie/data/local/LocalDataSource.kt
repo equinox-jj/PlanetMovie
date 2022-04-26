@@ -46,7 +46,7 @@ constructor(
     }
 
     suspend fun insertFavoriteMovie(movieDetailResponse: MovieDetailResponse) {
-        movieDao.insertFavoriteMovie(movieDetailResponse.mapMovieDetailToMovieFavoriteEntity())
+        movieDao.insertFavoriteMovie(mapMovieDetailToMovieFavoriteEntity(movieDetailResponse))
     }
 
     suspend fun deleteFavoriteMovie(movieId: Int) {
@@ -88,7 +88,7 @@ constructor(
     }
 
     suspend fun insertFavoriteTv(movieDetailResponse: MovieDetailResponse) {
-        tvDao.insertFavoriteTv(movieDetailResponse.mapTvDetailToTvFavoriteEntity())
+        tvDao.insertFavoriteTv(mapTvDetailToTvFavoriteEntity(movieDetailResponse))
     }
 
     suspend fun deleteFavoriteTv(tvId: Int) {

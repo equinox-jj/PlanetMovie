@@ -8,12 +8,12 @@ import com.planetmovie.util.Constant.Companion.TV_FAVORITE_TABLE
 class TvFavoriteEntity(
     @PrimaryKey(autoGenerate = false)
     var id: Int,
-    val overview: String,
-    val backdropPath: String,
-    val posterPath: String,
-    val tvName: String,
-    val voteAverage: Double,
-    val voteCount: Int,
-    val popularity: Double,
-    val tvFirstAirDate: String,
+    val overview: String?,
+    val backdropPath: String?,
+    val posterPath: String?,
+    val tvName: String?,
+    val voteAverage: Double?,
+    val voteCount: Int?,
+    val popularity: Double?,
+    val tvFirstAirDate: String?,
 )

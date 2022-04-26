@@ -22,7 +22,7 @@ data class MovieResult(
     @SerializedName("video") val video: Boolean?,
     @SerializedName("vote_average") val voteAverage: Double?,
     @SerializedName("vote_count") val voteCount: Int?,
-    @SerializedName("first_air_date") val tvFirstAirDate: String,
-    @SerializedName("homepage") val tvHomepage: String,
-    @SerializedName("name") val tvName: String
+    @SerializedName("first_air_date") val tvFirstAirDate: String?,
+    @SerializedName("homepage") val tvHomepage: String?,
+    @SerializedName("name") val tvName: String?
 ) : Parcelable

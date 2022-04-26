@@ -8,12 +8,12 @@ import com.planetmovie.util.Constant.Companion.MOVIE_FAVORITE_TABLE
 class MovieFavoriteEntity(
     @PrimaryKey(autoGenerate = false)
     var id: Int,
-    val overview: String,
-    val backdropPath: String,
-    val posterPath: String,
-    val title: String,
-    val voteAverage: Double,
-    val voteCount: Int,
-    val popularity: Double,
-    val releaseDate: String,
+    val overview: String?,
+    val backdropPath: String?,
+    val posterPath: String?,
+    val title: String?,
+    val voteAverage: Double?,
+    val voteCount: Int?,
+    val popularity: Double?,
+    val releaseDate: String?,
 )
