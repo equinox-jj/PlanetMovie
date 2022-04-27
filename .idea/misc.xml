@@ -9,6 +9,7 @@
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_apps_planetmovie_background.xml" value="0.125" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_back.xml" value="0.1945" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_favorite.xml" value="0.1945" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_foregrounds.xml" value="0.125" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_launcher_background.xml" value="0.126" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_mood_bad.xml" value="0.1945" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/drawable/ic_movie.xml" value="0.1945" />
@@ -67,6 +68,9 @@
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/menu/menu_detail.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/menu/menu_favorite_contextual.xml" value="0.18205128205128204" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/menu/menu_home.xml" value="0.18489583333333334" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/mipmap-anydpi-v26/ic_apps_planetmovie.xml" value="0.125" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/mipmap-anydpi-v26/ic_apps_planetmovie_round.xml" value="0.1" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.125" />
       </map>
     </option>
   </component>
