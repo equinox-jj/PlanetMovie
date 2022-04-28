@@ -16,7 +16,7 @@ import com.planetmovie.data.local.entity.*
         TvTopRatedEntity::class,
         TvFavoriteEntity::class
     ],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(MovieTypeConverter::class)

@@ -20,7 +20,7 @@ import javax.inject.Inject
 private val Context.dataStore by preferencesDataStore(PREFERENCE_NAME)
 
 @ViewModelScoped
-class DataStoreRepository
+class BackOnlinePreferences
 @Inject
 constructor(
     @ApplicationContext private val context: Context

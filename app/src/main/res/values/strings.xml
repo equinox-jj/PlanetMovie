@@ -44,5 +44,7 @@
     <string name="no_favorite_image">No Favorite Image</string>
     <string name="no_favorite_movie">No Favorite Movie.</string>
     <string name="no_favorite_tv">No Favorite Tv.</string>
+    <string name="planet_movie">Planet Movie</string>
+    <string name="all_movie_and_tv_data_provided_by_themoviedb_org">#All Movie and Tv Data Provided by themoviedb.org#</string>
 
 </resources>

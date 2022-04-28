@@ -109,8 +109,8 @@ dependencies {
     // Rounded Image View
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    // Image Slider
-    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
+    // Circle Image View
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
 
     // Splash Screen
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'

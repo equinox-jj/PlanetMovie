@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.planetmovie.R
 import com.planetmovie.databinding.ActivityMainBinding
-import com.planetmovie.ui.splash.SplashViewModel
+import com.planetmovie.ui.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
 
     // Splash Screen
-    private val viewModel: SplashViewModel by viewModels()
+    private val sharedViewModel: SharedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen().apply {
-            setKeepOnScreenCondition { viewModel.isLoading.value }
+            setKeepOnScreenCondition { sharedViewModel.isLoading.value }
         }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
