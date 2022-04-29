@@ -18,8 +18,8 @@ class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
     private var _binding: FragmentFavoriteMovieBinding? = null
     private val binding get() = _binding!!
 
-    private val mFavoriteMovieAdapter: ItemFavoriteMovieAdapter by lazy { ItemFavoriteMovieAdapter(requireActivity(),  mFavoriteMovieViewModel) }
     private val mFavoriteMovieViewModel: FavoriteViewModel by activityViewModels()
+    private val mFavoriteMovieAdapter: ItemFavoriteMovieAdapter by lazy { ItemFavoriteMovieAdapter(requireActivity(),  mFavoriteMovieViewModel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

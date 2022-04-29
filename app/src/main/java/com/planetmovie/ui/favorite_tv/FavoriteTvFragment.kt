@@ -19,8 +19,8 @@ class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
     private var _binding: FragmentFavoriteTvBinding? = null
     private val binding get() = _binding!!
 
-    private val mFavoriteTvAdapter: ItemFavoriteTvAdapter by lazy { ItemFavoriteTvAdapter(requireActivity(), mFavoriteTvViewModel) }
     private val mFavoriteTvViewModel: FavoriteViewModel by activityViewModels()
+    private val mFavoriteTvAdapter: ItemFavoriteTvAdapter by lazy { ItemFavoriteTvAdapter(requireActivity(), mFavoriteTvViewModel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
