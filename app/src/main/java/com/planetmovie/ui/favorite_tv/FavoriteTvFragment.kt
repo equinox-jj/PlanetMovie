@@ -3,9 +3,8 @@ package com.planetmovie.ui.favorite_tv
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.planetmovie.R
 import com.planetmovie.databinding.FragmentFavoriteTvBinding
 import com.planetmovie.ui.adapter.ItemFavoriteTvAdapter
@@ -19,8 +18,8 @@ class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
     private var _binding: FragmentFavoriteTvBinding? = null
     private val binding get() = _binding!!
 
-    private val mFavoriteTvViewModel: FavoriteViewModel by activityViewModels()
-    private val mFavoriteTvAdapter: ItemFavoriteTvAdapter by lazy { ItemFavoriteTvAdapter(requireActivity(), mFavoriteTvViewModel) }
+    private val mFavoriteTvViewModel: FavoriteViewModel by viewModels()
+    private lateinit var mFavoriteTvAdapter: ItemFavoriteTvAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,13 +28,16 @@ class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
         setHasOptionsMenu(true)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.favTvViewModel = mFavoriteTvViewModel
-        binding.mFavTvAdapter = mFavoriteTvAdapter
-        initRecyclerView(binding.rvFavoriteTv)
+        initRecyclerView()
     }
 
-    private fun initRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = mFavoriteTvAdapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    private fun initRecyclerView() {
+        binding.rvFavoriteTv.apply {
+            mFavoriteTvAdapter = ItemFavoriteTvAdapter(requireActivity(), mFavoriteTvViewModel)
+            adapter = mFavoriteTvAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        binding.mFavTvAdapter = mFavoriteTvAdapter
     }
 
     override fun onDestroyView() {

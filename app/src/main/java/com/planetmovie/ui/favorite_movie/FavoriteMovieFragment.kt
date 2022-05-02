@@ -3,9 +3,8 @@ package com.planetmovie.ui.favorite_movie
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.planetmovie.R
 import com.planetmovie.databinding.FragmentFavoriteMovieBinding
 import com.planetmovie.ui.adapter.ItemFavoriteMovieAdapter
@@ -18,8 +17,8 @@ class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
     private var _binding: FragmentFavoriteMovieBinding? = null
     private val binding get() = _binding!!
 
-    private val mFavoriteMovieViewModel: FavoriteViewModel by activityViewModels()
-    private val mFavoriteMovieAdapter: ItemFavoriteMovieAdapter by lazy { ItemFavoriteMovieAdapter(requireActivity(),  mFavoriteMovieViewModel) }
+    private val mFavoriteMovieViewModel: FavoriteViewModel by viewModels()
+    private lateinit var mFavoriteMovieAdapter: ItemFavoriteMovieAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,13 +27,16 @@ class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
         setHasOptionsMenu(true)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.favMovieViewModel = mFavoriteMovieViewModel
-        binding.mFavMovieAdapter = mFavoriteMovieAdapter
-        initRecyclerView(binding.rvFavoriteMovie)
+        initRecyclerView()
     }
 
-    private fun initRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = mFavoriteMovieAdapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    private fun initRecyclerView() {
+        binding.rvFavoriteMovie.apply {
+            mFavoriteMovieAdapter = ItemFavoriteMovieAdapter(requireActivity(), mFavoriteMovieViewModel)
+            adapter = mFavoriteMovieAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        binding.mFavMovieAdapter = mFavoriteMovieAdapter
     }
 
     override fun onDestroyView() {
