@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
 
     <!-- LIGHT THEME COLOR -->
+    <color name="color_white">#FFFFFF</color>
     <color name="color_icon_unfavorite">#FFFFFF</color>
     <color name="color_icon_favorite">#FF0000</color>
     <color name="color_icon">#000000</color>

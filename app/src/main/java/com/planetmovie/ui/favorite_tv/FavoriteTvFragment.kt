@@ -26,9 +26,8 @@ class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
         _binding = FragmentFavoriteTvBinding.bind(view)
 
         setHasOptionsMenu(true)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.favTvViewModel = mFavoriteTvViewModel
         initRecyclerView()
+        initDataBinding()
     }
 
     private fun initRecyclerView() {
@@ -37,6 +36,11 @@ class FavoriteTvFragment : Fragment(R.layout.fragment_favorite_tv) {
             adapter = mFavoriteTvAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    private fun initDataBinding() {
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.favTvViewModel = mFavoriteTvViewModel
         binding.mFavTvAdapter = mFavoriteTvAdapter
     }
 

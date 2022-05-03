@@ -49,6 +49,7 @@ class SearchTvFragment : Fragment(R.layout.fragment_search_tv) {
     }
 
     private fun searchTv() {
+        binding.svSearchTv.isSubmitButtonEnabled = true
         binding.svSearchTv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
@@ -58,7 +59,7 @@ class SearchTvFragment : Fragment(R.layout.fragment_search_tv) {
                 return true
             }
 
-            override fun onQueryTextChange(query: String?): Boolean = true
+            override fun onQueryTextChange(query: String?): Boolean = false
 
         })
     }

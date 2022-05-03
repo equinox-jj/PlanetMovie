@@ -13,6 +13,7 @@ import com.planetmovie.databinding.FragmentSearchMovieBinding
 import com.planetmovie.ui.SharedViewModel
 import com.planetmovie.ui.adapter.ItemSearchMovieAdapter
 import com.planetmovie.ui.movie.MovieViewModel
+import com.planetmovie.util.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,16 +51,20 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search_movie) {
     }
 
     private fun searchMovie() {
+//        binding.svSearchMovie.requestFocus()
+//        binding.svSearchMovie.showKeyboard()
+        binding.svSearchMovie.isSubmitButtonEnabled = true
         binding.svSearchMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     searchMovieViewModel(query)
                     binding.svSearchMovie.clearFocus()
+                    binding.svSearchMovie.hideKeyboard()
                 }
                 return true
             }
 
-            override fun onQueryTextChange(query: String?): Boolean = true
+            override fun onQueryTextChange(query: String?): Boolean = false
 
         })
     }

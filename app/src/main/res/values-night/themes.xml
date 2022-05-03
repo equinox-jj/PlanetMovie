@@ -16,23 +16,20 @@
         <item name="actionBarStyle">@style/Widget.MaterialComponents.ActionBar.Primary</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/color_appbar</item>
-        <item name="colorPrimaryVariant">@color/color_appbar</item>
-        <item name="colorOnPrimary">@color/color_text</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/color_text</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/color_status_bar</item>
-        <!-- Customize your theme here. -->
-        <item name="android:background">@color/color_background</item>
+    <style name="SearchMovie" parent="Widget.AppCompat.SearchView">
+        <item name="background">@color/color_card_background</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="queryHint">Search Movie...</item>
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="elevation">3dp</item>
     </style>
 
-    <style name="SearchTheme" parent="Widget.AppCompat.SearchView">
+    <style name="SearchTv" parent="Widget.AppCompat.SearchView">
         <item name="background">@color/color_card_background</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="queryHint">Search Tv...</item>
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="elevation">3dp</item>
     </style>
 
 </resources>

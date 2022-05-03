@@ -25,9 +25,8 @@ class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
         _binding = FragmentFavoriteMovieBinding.bind(view)
 
         setHasOptionsMenu(true)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.favMovieViewModel = mFavoriteMovieViewModel
         initRecyclerView()
+        initDataBinding()
     }
 
     private fun initRecyclerView() {
@@ -36,6 +35,11 @@ class FavoriteMovieFragment : Fragment(R.layout.fragment_favorite_movie) {
             adapter = mFavoriteMovieAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    private fun initDataBinding() {
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.favMovieViewModel = mFavoriteMovieViewModel
         binding.mFavMovieAdapter = mFavoriteMovieAdapter
     }
 
