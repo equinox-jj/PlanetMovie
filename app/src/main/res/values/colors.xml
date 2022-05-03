@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
@@ -11,6 +8,7 @@
     <color name="color_icon_unfavorite">#FFFFFF</color>
     <color name="color_icon_favorite">#FF0000</color>
     <color name="color_icon">#000000</color>
+    <color name="color_outline_search">#000a12</color>
     <color name="color_gradient">#484848</color>
     <color name="color_card_background">#DFD3D3</color>
     <color name="color_card_shadow">#272a28</color>

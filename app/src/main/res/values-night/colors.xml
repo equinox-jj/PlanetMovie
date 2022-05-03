@@ -4,6 +4,7 @@
     <color name="color_icon_unfavorite">#FFFFFF</color>
     <color name="color_icon_favorite">#FF0000</color>
     <color name="color_icon">#ffffff</color>
+    <color name="color_outline_search">#038719</color>
     <color name="color_gradient">#212121</color>
     <color name="color_card_background">#272a28</color>
     <color name="color_card_shadow">#038719</color>
