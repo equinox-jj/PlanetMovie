@@ -22,3 +22,6 @@ PlanetMovie is a Movie and Tv Series Catalogue android apps. This application ca
 * [Data Store](https://developer.android.com/topic/libraries/architecture/datastore?gclsrc=ds&gclsrc=ds)
 * [Image Coil](https://github.com/coil-kt/coil)
 * [Lottie Animation](https://airbnb.io/lottie/#/android)
+
+# Download APK:
+* [PlanetMovie.apk](https://github.com/equinox-jj/PlanetMovie/raw/main/docs/PlanetMovie.apk)
