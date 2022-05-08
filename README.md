@@ -24,5 +24,12 @@ PlanetMovie is a Movie and Tv Series Catalog android apps. This application can 
 * [Image Coil](https://github.com/coil-kt/coil)
 * [Retrofit2](https://square.github.io/retrofit/)
 
+# Project Setup:
+You need a [Movie TMDB API KEY](https://developers.themoviedb.org/3/getting-started/introduction) to make the project work.
+And then put your API_KEY in [util/Constant.kt](https://github.com/equinox-jj/PlanetMovie/blob/main/app/src/main/java/com/planetmovie/util/Constant.kt)
+```
+const val API_KEY = "[ PUT YOUR API KEY HERE ]"
+```
+
 # Download APK:
 * [PlanetMovie.apk](https://github.com/equinox-jj/PlanetMovie/raw/main/docs/PlanetMovie.apk)
