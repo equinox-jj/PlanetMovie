@@ -1,10 +1,8 @@
 package com.planetmovie.util
 
-import com.planetmovie.BuildConfig
-
 class Constant {
     companion object {
-        const val API_KEY = BuildConfig.API_KEY
+        const val API_KEY = "[ PUT YOUR API KEY HERE ]"
 
         const val BASE_URL = "https://api.themoviedb.org/3/"
         const val BASE_IMG_URL_BACKDROP = "https://image.tmdb.org/t/p/w780/"
