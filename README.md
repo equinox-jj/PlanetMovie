@@ -4,17 +4,6 @@ PlanetMovie is a Movie and Tv Series Catalog android apps. This application can 
 # Preview Apps:
 ![Image Apps](https://github.com/equinox-jj/PlanetMovie/blob/main/docs/apps_img.jpg)
 
-# Features:
-* Using MVVM (Model-View-ViewModel) Architecture.
-* Using Coroutines to perform asynchronous operation.
-* Using Retrofit to request api network.
-* Using View Binding and Data Binding to bind the view and bind data sources from the provider.
-* Using Navigation Component to navigate between the Fragments.
-* Using Data Store Preferences to save the key-value.
-* Using Image Coil to load the Image.
-* Using ROOM Database for the local database.
-* Using Dagger-Hilt for the Dependency Injection.
-
 # Dependencies:
 * [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 * [Room Database](https://developer.android.com/training/data-storage/room)
