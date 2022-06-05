@@ -3,7 +3,7 @@ package com.planetmovie.data.remote
 import com.planetmovie.data.remote.model.MovieDetailResponse
 import com.planetmovie.data.remote.model.MovieResponse
 import com.planetmovie.data.remote.retrofit.ApiEndPoint
-import com.planetmovie.util.Constant.Companion.QUERY_APPEND
+import com.planetmovie.util.Constant.QUERY_APPEND
 import retrofit2.Response
 import javax.inject.Inject
 

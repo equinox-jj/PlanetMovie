@@ -12,6 +12,8 @@ import com.planetmovie.ui.SharedViewModel
 import com.planetmovie.ui.adapter.ItemTvListAdapter
 import com.planetmovie.util.NetworkListener
 import com.planetmovie.util.observeOnce
+import com.planetmovie.util.setVisibilityGone
+import com.planetmovie.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -49,19 +51,19 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
     }
 
     private fun initRecyclerView() {
-        binding.rvAiringNow.apply {
+        binding.contentTvAiringToday.rvAiringNow.apply {
             mAiringTodayAdapter = ItemTvListAdapter()
             adapter = mAiringTodayAdapter
             setHasFixedSize(true)
         }
 
-        binding.rvPopularTv.apply {
+        binding.contentTvPopular.rvPopularTv.apply {
             mPopularAdapter = ItemTvListAdapter()
             adapter = mPopularAdapter
             setHasFixedSize(true)
         }
 
-        binding.rvTopRatedTv.apply {
+        binding.contentTvTopRated.rvTopRatedTv.apply {
             mTopRatedAdapter = ItemTvListAdapter()
             adapter = mTopRatedAdapter
             setHasFixedSize(true)
@@ -120,7 +122,6 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
-                    hideText()
                     loadDataFromCache()
                 }
                 is Resource.Loading -> {
@@ -138,7 +139,6 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
-                    hideText()
                     loadDataFromCache()
                 }
                 is Resource.Loading -> {
@@ -156,7 +156,6 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
-                    hideText()
                     loadDataFromCache()
                 }
                 is Resource.Loading -> {
@@ -190,33 +189,24 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
         binding.apply {
             if (boolean) {
                 isShimmerLoading = true
-                shimmerRvTv.startShimmer()
-                shimmerRvTv.visibility = View.VISIBLE
-                tvTvOne.visibility = View.GONE
-                tvTvTwo.visibility = View.GONE
-                tvTvThree.visibility = View.GONE
-                rvAiringNow.visibility = View.GONE
-                rvPopularTv.visibility = View.GONE
-                rvTopRatedTv.visibility = View.GONE
+                binding.contShimTvAiringToday.root.setVisibilityVisible()
+                binding.contShimTvTopRated.root.setVisibilityVisible()
+                binding.contShimTvPopular.root.setVisibilityVisible()
+                binding.contentTvAiringToday.root.setVisibilityGone()
+                binding.contentTvTopRated.root.setVisibilityGone()
+                binding.contentTvPopular.root.setVisibilityGone()
             } else {
                 isShimmerLoading = false
-                shimmerRvTv.stopShimmer()
-                shimmerRvTv.visibility = View.GONE
-                tvTvOne.visibility = View.VISIBLE
-                tvTvTwo.visibility = View.VISIBLE
-                tvTvThree.visibility = View.VISIBLE
-                rvAiringNow.visibility = View.VISIBLE
-                rvPopularTv.visibility = View.VISIBLE
-                rvTopRatedTv.visibility = View.VISIBLE
+                binding.contShimTvAiringToday.root.stopShimmer()
+                binding.contShimTvTopRated.root.stopShimmer()
+                binding.contShimTvPopular.root.stopShimmer()
+                binding.contShimTvAiringToday.root.setVisibilityGone()
+                binding.contShimTvTopRated.root.setVisibilityGone()
+                binding.contShimTvPopular.root.setVisibilityGone()
+                binding.contentTvAiringToday.root.setVisibilityVisible()
+                binding.contentTvTopRated.root.setVisibilityVisible()
+                binding.contentTvPopular.root.setVisibilityVisible()
             }
-        }
-    }
-
-    private fun hideText() {
-        binding.apply {
-            tvTvOne.visibility = View.GONE
-            tvTvTwo.visibility = View.GONE
-            tvTvThree.visibility = View.GONE
         }
     }
 

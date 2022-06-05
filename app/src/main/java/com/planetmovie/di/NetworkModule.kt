@@ -1,7 +1,7 @@
 package com.planetmovie.di
 
 import com.planetmovie.data.remote.retrofit.ApiEndPoint
-import com.planetmovie.util.Constant.Companion.BASE_URL
+import com.planetmovie.util.Constant.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

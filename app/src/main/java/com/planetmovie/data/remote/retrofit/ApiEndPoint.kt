@@ -2,12 +2,12 @@ package com.planetmovie.data.remote.retrofit
 
 import com.planetmovie.data.remote.model.MovieDetailResponse
 import com.planetmovie.data.remote.model.MovieResponse
-import com.planetmovie.util.Constant.Companion.API_KEY
-import com.planetmovie.util.Constant.Companion.QUERY_API
-import com.planetmovie.util.Constant.Companion.QUERY_APPEND_RESPONSE
-import com.planetmovie.util.Constant.Companion.QUERY_MOVIE_ID
-import com.planetmovie.util.Constant.Companion.QUERY_PAGE
-import com.planetmovie.util.Constant.Companion.QUERY_TV_ID
+import com.planetmovie.util.Constant.API_KEY
+import com.planetmovie.util.Constant.QUERY_API
+import com.planetmovie.util.Constant.QUERY_APPEND_RESPONSE
+import com.planetmovie.util.Constant.QUERY_MOVIE_ID
+import com.planetmovie.util.Constant.QUERY_PAGE
+import com.planetmovie.util.Constant.QUERY_TV_ID
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

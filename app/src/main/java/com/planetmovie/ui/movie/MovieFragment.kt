@@ -12,6 +12,8 @@ import com.planetmovie.ui.SharedViewModel
 import com.planetmovie.ui.adapter.ItemMovieListAdapter
 import com.planetmovie.util.NetworkListener
 import com.planetmovie.util.observeOnce
+import com.planetmovie.util.setVisibilityGone
+import com.planetmovie.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -49,19 +51,19 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     }
 
     private fun initRecyclerView() {
-        binding.rvNowPlaying.apply {
+        binding.contentMovieNowPlaying.rvNowPlaying.apply {
             mNowPlayingAdapter = ItemMovieListAdapter()
             adapter = mNowPlayingAdapter
             setHasFixedSize(true)
         }
 
-        binding.rvPopularMovie.apply {
+        binding.contentMoviePopular.rvPopularMovie.apply {
             mPopularAdapter = ItemMovieListAdapter()
             adapter = mPopularAdapter
             setHasFixedSize(true)
         }
 
-        binding.rvUpcomingMovie.apply {
+        binding.contentMovieUpcoming.rvUpcomingMovie.apply {
             mUpcomingAdapter = ItemMovieListAdapter()
             adapter = mUpcomingAdapter
             setHasFixedSize(true)
@@ -75,10 +77,10 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         lifecycleScope.launch {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext()).collect { status ->
-                    mSharedViewModel.networkStatus = status
-                    mSharedViewModel.showNetworkStatus()
-                    readDatabase()
-                }
+                mSharedViewModel.networkStatus = status
+                mSharedViewModel.showNetworkStatus()
+                readDatabase()
+            }
         }
     }
 
@@ -121,7 +123,6 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
-                    hideText()
                     loadDataFromCache()
                 }
                 is Resource.Loading -> {
@@ -139,7 +140,6 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
-                    hideText()
                     loadDataFromCache()
                 }
                 is Resource.Loading -> {
@@ -157,7 +157,6 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
                 }
                 is Resource.Error -> {
                     showShimmer(false)
-                    hideText()
                     loadDataFromCache()
                 }
                 is Resource.Loading -> {
@@ -191,33 +190,24 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         binding.apply {
             if (boolean) {
                 isShimmerLoading = true
-                shimmerRvMovie.startShimmer()
-                shimmerRvMovie.visibility = View.VISIBLE
-                tvMovieOne.visibility = View.GONE
-                tvMovieTwo.visibility = View.GONE
-                tvMovieThree.visibility = View.GONE
-                rvPopularMovie.visibility = View.GONE
-                rvUpcomingMovie.visibility = View.GONE
-                rvNowPlaying.visibility = View.GONE
+                binding.contShimMoviePopular.root.setVisibilityVisible()
+                binding.contShimMovieNowPlaying.root.setVisibilityVisible()
+                binding.contShimMovieUpcoming.root.setVisibilityVisible()
+                binding.contentMoviePopular.root.setVisibilityGone()
+                binding.contentMovieUpcoming.root.setVisibilityGone()
+                binding.contentMovieNowPlaying.root.setVisibilityGone()
             } else {
                 isShimmerLoading = false
-                shimmerRvMovie.stopShimmer()
-                shimmerRvMovie.visibility = View.GONE
-                tvMovieOne.visibility = View.VISIBLE
-                tvMovieTwo.visibility = View.VISIBLE
-                tvMovieThree.visibility = View.VISIBLE
-                rvPopularMovie.visibility = View.VISIBLE
-                rvUpcomingMovie.visibility = View.VISIBLE
-                rvNowPlaying.visibility = View.VISIBLE
+                binding.contShimMoviePopular.root.stopShimmer()
+                binding.contShimMovieUpcoming.root.stopShimmer()
+                binding.contShimMovieNowPlaying.root.stopShimmer()
+                binding.contShimMoviePopular.root.setVisibilityGone()
+                binding.contShimMovieNowPlaying.root.setVisibilityGone()
+                binding.contShimMovieUpcoming.root.setVisibilityGone()
+                binding.contentMoviePopular.root.setVisibilityVisible()
+                binding.contentMovieUpcoming.root.setVisibilityVisible()
+                binding.contentMovieNowPlaying.root.setVisibilityVisible()
             }
-        }
-    }
-
-    private fun hideText() {
-        binding.apply {
-            tvMovieOne.visibility = View.GONE
-            tvMovieTwo.visibility = View.GONE
-            tvMovieThree.visibility = View.GONE
         }
     }
 

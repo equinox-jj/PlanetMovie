@@ -3,7 +3,7 @@ package com.planetmovie.di
 import android.content.Context
 import androidx.room.Room
 import com.planetmovie.data.local.database.MovieDatabase
-import com.planetmovie.util.Constant.Companion.DATABASE_NAME
+import com.planetmovie.util.Constant.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

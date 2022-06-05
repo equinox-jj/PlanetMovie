@@ -29,12 +29,21 @@
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/activity_splash.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/activity_splash_screen.xml" value="0.17074275362318841" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/activity_youtube.xml" value="0.18489583333333334" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_movie_now_playing.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_movie_popular.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_movie_top_rated.xml" value="0.16324786324786325" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_movie_trending.xml" value="0.19895833333333332" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_movie_upcoming.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_top_rated_tv.xml" value="0.19895833333333332" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_tv_airing_now.xml" value="0.19895833333333332" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_tv_popular.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/content_tv_top_rated.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_about.xml" value="0.25" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_favorite.xml" value="0.25" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_favorite_movie.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_favorite_tv.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_movie.xml" value="0.33" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_movie.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_movie_detail.xml" value="0.22" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_search.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/fragment_search_movie.xml" value="0.33" />
@@ -61,12 +70,14 @@
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/item_tv_cast.xml" value="0.1890625" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/item_video.xml" value="0.17074275362318841" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/my.xml" value="0.18489583333333334" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_bottom.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_detail_item.xml" value="0.1890625" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_list_movie.xml" value="0.16" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_movie_item.xml" value="0.17074275362318841" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_search_item.xml" value="0.17074275362318841" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_search_movie.xml" value="0.17074275362318841" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_text_movie.xml" value="0.17074275362318841" />
+        <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/shimmer_top.xml" value="0.16324786324786325" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/layout/test.xml" value="0.17074275362318841" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/menu/menu_bott_nav.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/PlanetMovie/app/src/main/res/menu/menu_detail.xml" value="0.18489583333333334" />

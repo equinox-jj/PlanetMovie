@@ -5,12 +5,12 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
-import com.planetmovie.data.Repository
 import com.planetmovie.data.Resource
 import com.planetmovie.data.local.entity.MovieNowPlayingEntity
 import com.planetmovie.data.local.entity.MoviePopularEntity
 import com.planetmovie.data.local.entity.MovieUpcomingEntity
 import com.planetmovie.data.remote.model.MovieResponse
+import com.planetmovie.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

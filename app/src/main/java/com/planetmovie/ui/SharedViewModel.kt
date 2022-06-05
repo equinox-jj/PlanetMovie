@@ -5,11 +5,11 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.planetmovie.data.preferences.BackOnlinePreferences
-import com.planetmovie.util.Constant.Companion.API_KEY
-import com.planetmovie.util.Constant.Companion.QUERY_API
-import com.planetmovie.util.Constant.Companion.QUERY_PAGE
-import com.planetmovie.util.Constant.Companion.QUERY_SEARCH
+import com.planetmovie.data.preferences.DataStoreRepository
+import com.planetmovie.util.Constant.API_KEY
+import com.planetmovie.util.Constant.QUERY_API
+import com.planetmovie.util.Constant.QUERY_PAGE
+import com.planetmovie.util.Constant.QUERY_SEARCH
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val backOnlinePreferences: BackOnlinePreferences,
+    private val dataStoreRepository: DataStoreRepository,
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -36,11 +36,11 @@ class SharedViewModel @Inject constructor(
 
     var networkStatus = false
     var backOnline = false
-    val readBackOnline = backOnlinePreferences.readBackOnline.asLiveData()
+    val readBackOnline = dataStoreRepository.readBackOnline.asLiveData()
 
     private fun saveBackOnline(backOnline: Boolean) =
         viewModelScope.launch(Dispatchers.IO) {
-            backOnlinePreferences.saveBackOnline(backOnline)
+            dataStoreRepository.saveBackOnline(backOnline)
         }
 
     fun searchQueries(searchQuery: String): HashMap<String, String> {
@@ -53,7 +53,6 @@ class SharedViewModel @Inject constructor(
 
     fun showNetworkStatus() {
         if (!networkStatus) {
-            Toast.makeText(getApplication(), "Offline.", Toast.LENGTH_SHORT).show()
             Toast.makeText(getApplication(), "No Internet Connection.", Toast.LENGTH_SHORT).show()
             saveBackOnline(true)
         } else if (networkStatus) {

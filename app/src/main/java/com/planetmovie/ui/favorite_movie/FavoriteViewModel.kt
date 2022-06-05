@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.planetmovie.data.Repository
 import com.planetmovie.data.local.entity.MovieFavoriteEntity
 import com.planetmovie.data.local.entity.TvFavoriteEntity
+import com.planetmovie.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
