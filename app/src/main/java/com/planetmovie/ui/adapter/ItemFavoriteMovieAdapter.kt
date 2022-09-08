@@ -13,6 +13,7 @@ import com.planetmovie.databinding.ItemFavoriteMovieBinding
 import com.planetmovie.ui.favorite_movie.FavoriteMovieFragmentDirections
 import com.planetmovie.ui.favorite_movie.FavoriteViewModel
 import com.planetmovie.util.NetworkDiffUtil
+import okhttp3.internal.immutableListOf
 
 class ItemFavoriteMovieAdapter(
     private val requireActivity: FragmentActivity,
@@ -26,7 +27,7 @@ class ItemFavoriteMovieAdapter(
 
     private var selectedMovies = arrayListOf<MovieFavoriteEntity>()
     private var viewHolder = arrayListOf<ItemFavMovieViewHolder>()
-    private var movieFavoriteEntity = emptyList<MovieFavoriteEntity>()
+    private var movieFavoriteEntity = immutableListOf<MovieFavoriteEntity>()
 
     class ItemFavMovieViewHolder(val binding: ItemFavoriteMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -8,10 +8,11 @@ import com.planetmovie.data.remote.model.MovieVideos
 import com.planetmovie.data.remote.model.MovieVideosResult
 import com.planetmovie.databinding.ItemTrailerBinding
 import com.planetmovie.util.NetworkDiffUtil
+import okhttp3.internal.immutableListOf
 
 class ItemTrailerAdapter : RecyclerView.Adapter<ItemTrailerAdapter.MyViewHolder>() {
 
-    private var movieTrailer = emptyList<MovieVideosResult>()
+    private var movieTrailer = immutableListOf<MovieVideosResult>()
 
     class MyViewHolder(private val binding: ItemTrailerBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movieTrailer: MovieVideosResult) {

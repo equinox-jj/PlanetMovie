@@ -74,7 +74,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
         mSharedViewModel.readBackOnline.observe(viewLifecycleOwner) {
             mSharedViewModel.backOnline = it
         }
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext()).collect { status ->
                 mSharedViewModel.networkStatus = status
@@ -84,7 +84,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
     }
 
     private fun readDatabase() {
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             mTvViewModel.readTvAiringToday.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     mAiringTodayAdapter.tvDiffUtil(database[0].tvAiringTodayData)
@@ -166,7 +166,7 @@ class TvFragment : Fragment(R.layout.fragment_tv) {
     }
 
     private fun loadDataFromCache() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             mTvViewModel.readTvAiringToday.observe(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     mAiringTodayAdapter.tvDiffUtil(database[0].tvAiringTodayData)

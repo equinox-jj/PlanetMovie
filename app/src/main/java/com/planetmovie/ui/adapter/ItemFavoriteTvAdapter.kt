@@ -13,6 +13,7 @@ import com.planetmovie.databinding.ItemFavoriteTvBinding
 import com.planetmovie.ui.favorite_movie.FavoriteViewModel
 import com.planetmovie.ui.favorite_tv.FavoriteTvFragmentDirections
 import com.planetmovie.util.NetworkDiffUtil
+import okhttp3.internal.immutableListOf
 
 class ItemFavoriteTvAdapter(
     private val requireActivity: FragmentActivity,
@@ -26,7 +27,7 @@ class ItemFavoriteTvAdapter(
 
     private var selectedTv = arrayListOf<TvFavoriteEntity>()
     private var viewHolder = arrayListOf<ItemFavTvViewHolder>()
-    private var tvFavoriteEntity = emptyList<TvFavoriteEntity>()
+    private var tvFavoriteEntity = immutableListOf<TvFavoriteEntity>()
 
     class ItemFavTvViewHolder(val binding: ItemFavoriteTvBinding) :
         RecyclerView.ViewHolder(binding.root) {

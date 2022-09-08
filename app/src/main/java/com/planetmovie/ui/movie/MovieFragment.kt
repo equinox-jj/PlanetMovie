@@ -74,7 +74,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         mSharedViewModel.readBackOnline.observe(viewLifecycleOwner) {
             mSharedViewModel.backOnline = it
         }
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext()).collect { status ->
                 mSharedViewModel.networkStatus = status
@@ -85,7 +85,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     }
 
     private fun readDatabase() {
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             mMovieViewModel.readMoviesNowPlaying.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     mNowPlayingAdapter.movieDiffUtil(database[0].movieNowPlayingData)
@@ -167,7 +167,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     }
 
     private fun loadDataFromCache() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             mMovieViewModel.readMoviesNowPlaying.observe(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     mNowPlayingAdapter.movieDiffUtil(database[0].movieNowPlayingData)

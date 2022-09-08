@@ -8,10 +8,11 @@ import com.planetmovie.data.remote.model.MovieResponse
 import com.planetmovie.data.remote.model.MovieResult
 import com.planetmovie.databinding.ItemSearchMovieBinding
 import com.planetmovie.util.NetworkDiffUtil
+import okhttp3.internal.immutableListOf
 
 class ItemSearchMovieAdapter : RecyclerView.Adapter<ItemSearchMovieAdapter.MyViewHolder>() {
 
-    private var searchMovieResult = emptyList<MovieResult>()
+    private var searchMovieResult = immutableListOf<MovieResult>()
 
     class MyViewHolder(private val binding: ItemSearchMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {

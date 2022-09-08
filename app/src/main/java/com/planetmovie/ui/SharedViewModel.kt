@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.planetmovie.data.preferences.DataStoreRepository
+import com.planetmovie.data.repository.DataStoreRepository
 import com.planetmovie.util.Constant.API_KEY
 import com.planetmovie.util.Constant.QUERY_API
 import com.planetmovie.util.Constant.QUERY_PAGE

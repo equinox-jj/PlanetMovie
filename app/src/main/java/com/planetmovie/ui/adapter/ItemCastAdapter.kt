@@ -8,10 +8,11 @@ import com.planetmovie.data.remote.model.MovieCast
 import com.planetmovie.data.remote.model.MovieCredits
 import com.planetmovie.databinding.ItemCastBinding
 import com.planetmovie.util.NetworkDiffUtil
+import okhttp3.internal.immutableListOf
 
 class ItemCastAdapter : RecyclerView.Adapter<ItemCastAdapter.MyViewHolder>() {
 
-    private var movieCast = emptyList<MovieCast>()
+    private var movieCast = immutableListOf<MovieCast>()
 
     class MyViewHolder(private val binding: ItemCastBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movieCast: MovieCast) {
